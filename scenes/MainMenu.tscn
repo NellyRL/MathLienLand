@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/shaders/starfield_shader_v5.gdshader" type="Shader" id=1]
 [ext_resource path="res://assets/fonts/VCRosdNEUE.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/themes/kenneyUI-red.tres" type="Theme" id=3]
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -27,6 +28,7 @@ size = 50
 font_data = ExtResource( 2 )
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -75,7 +77,7 @@ size_flags_vertical = 3
 custom_constants/margin_right = 200
 custom_constants/margin_left = 200
 
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+[node name="SelectMinBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
 margin_left = 200.0
 margin_right = 624.0
 margin_bottom = 75.251
@@ -92,10 +94,13 @@ size_flags_vertical = 3
 custom_constants/margin_right = 200
 custom_constants/margin_left = 200
 
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2"]
+[node name="ExitBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2"]
 margin_left = 200.0
 margin_right = 624.0
 margin_bottom = 75.251
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 3 )
 text = "Exit"
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/SelectMinBtn" to="." method="_on_SelectMinBtn_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/ExitBtn" to="." method="_on_ExitBtn_pressed"]
