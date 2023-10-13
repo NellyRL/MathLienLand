@@ -27,7 +27,7 @@ tracks/0/keys = {
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 8, -2.5 )
+position = Vector2( 1, 0 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." index="3"]

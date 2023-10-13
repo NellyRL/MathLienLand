@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/themes/kenneyUI.tres" type="Theme" id=1]
+[ext_resource path="res://assets/themes/kenneyUI-red.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/VCRosdNEUE.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://mainmenu/BaseBtn.gd" type="Script" id=3]
 
@@ -12,8 +12,9 @@ font_data = ExtResource( 2 )
 [node name="BaseBtn" type="Button"]
 margin_right = 175.0
 margin_bottom = 175.0
-rect_min_size = Vector2( 175, 175 )
 focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 1 )
 script = ExtResource( 3 )

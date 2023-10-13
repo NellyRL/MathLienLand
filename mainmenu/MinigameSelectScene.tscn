@@ -58,7 +58,7 @@ custom_constants/margin_bottom = 100
 margin_left = 100.0
 margin_top = 100.0
 margin_right = 924.0
-margin_bottom = 535.0
+margin_bottom = 500.0
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_right = 824.0
@@ -72,24 +72,21 @@ valign = 1
 [node name="MinigameBtns" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 55.0
 margin_right = 824.0
-margin_bottom = 435.0
-size_flags_vertical = 3
-
-[node name="Spacer1" type="Control" parent="MarginContainer/VBoxContainer/MinigameBtns"]
-margin_right = 115.0
-margin_bottom = 380.0
-size_flags_horizontal = 3
+margin_bottom = 400.0
 size_flags_vertical = 3
 
 [node name="BtnGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/MinigameBtns"]
-margin_left = 119.0
-margin_right = 704.0
-margin_bottom = 380.0
+margin_right = 824.0
+margin_bottom = 345.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/vseparation = 30
 custom_constants/hseparation = 30
 columns = 3
 
 [node name="FractionRace" parent="MarginContainer/VBoxContainer/MinigameBtns/BtnGrid" instance=ExtResource( 1 )]
+margin_right = 255.0
+margin_bottom = 158.0
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
@@ -103,11 +100,13 @@ align = 1
 valign = 1
 
 [node name="Labyrinth" parent="MarginContainer/VBoxContainer/MinigameBtns/BtnGrid" instance=ExtResource( 1 )]
-margin_left = 205.0
-margin_right = 380.0
+margin_left = 285.0
+margin_right = 540.0
+margin_bottom = 158.0
 focus_mode = 2
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+next_scene_path = "res://minigames/labyrinthofrule3/ui/StartScreen.tscn"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MinigameBtns/BtnGrid/Labyrinth"]
 anchor_right = 1.0
@@ -120,8 +119,9 @@ align = 1
 valign = 1
 
 [node name="BaseBtn3" parent="MarginContainer/VBoxContainer/MinigameBtns/BtnGrid" instance=ExtResource( 1 )]
-margin_left = 410.0
-margin_right = 585.0
+margin_left = 570.0
+margin_right = 824.0
+margin_bottom = 158.0
 focus_mode = 2
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -136,8 +136,9 @@ align = 1
 valign = 1
 
 [node name="BaseBtn4" parent="MarginContainer/VBoxContainer/MinigameBtns/BtnGrid" instance=ExtResource( 1 )]
-margin_top = 205.0
-margin_bottom = 380.0
+margin_top = 188.0
+margin_right = 255.0
+margin_bottom = 345.0
 focus_mode = 2
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -152,10 +153,10 @@ align = 1
 valign = 1
 
 [node name="FunctionMemory" parent="MarginContainer/VBoxContainer/MinigameBtns/BtnGrid" instance=ExtResource( 1 )]
-margin_left = 205.0
-margin_top = 205.0
-margin_right = 380.0
-margin_bottom = 380.0
+margin_left = 285.0
+margin_top = 188.0
+margin_right = 540.0
+margin_bottom = 345.0
 focus_mode = 2
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -170,10 +171,10 @@ align = 1
 valign = 1
 
 [node name="EndlessRunner" parent="MarginContainer/VBoxContainer/MinigameBtns/BtnGrid" instance=ExtResource( 1 )]
-margin_left = 410.0
-margin_top = 205.0
-margin_right = 585.0
-margin_bottom = 380.0
+margin_left = 570.0
+margin_top = 188.0
+margin_right = 824.0
+margin_bottom = 345.0
 focus_mode = 2
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -187,13 +188,6 @@ Math
 Runner"
 align = 1
 valign = 1
-
-[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/MinigameBtns"]
-margin_left = 708.0
-margin_right = 824.0
-margin_bottom = 380.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="OptionBtns" type="MarginContainer" parent="."]
 anchor_right = 1.0

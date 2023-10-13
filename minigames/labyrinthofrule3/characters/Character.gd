@@ -42,6 +42,7 @@ func move(direction):
 	move_allowed = false
 	# Ejecutamos la animacion
 	$AnimationPlayer.play(orientation)
+	
 	# Tween para hacer mas atractivo el movimiento.
 	# TODO: Cambiar este tween.
 	# Esto es lo que movera al jugador.
@@ -49,9 +50,10 @@ func move(direction):
 	var origin = position
 	var end = position + movs[orientation] * tile_dim
 	#print(origin, end)
-	$MoveTween.interpolate_property(self, "position", origin, end, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$MoveTween.start()
-	return true
+	if is_processing():
+		$MoveTween.interpolate_property(self, "position", origin, end, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		$MoveTween.start()
+		return true
 	
 
 
