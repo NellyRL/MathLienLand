@@ -128,6 +128,7 @@ margin_left = 298.0
 margin_right = 526.0
 margin_bottom = 50.251
 text = "START"
+next_scene_path = "res://minigames/labyrinthofrule3/levels/Level0.tscn"
 
 [node name="Info" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/GridContainer"]
 margin_left = 596.0

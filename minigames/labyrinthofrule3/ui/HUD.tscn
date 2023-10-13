@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/themes/kenneyUI-blue.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/VCRosdNEUE.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://minigames/labyrinthofrule3/ui/HUD.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 0.219608, 0.392157, 0.576471, 1 )
@@ -72,6 +73,7 @@ Panel/styles/panel = SubResource( 7 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 16 )
+script = ExtResource( 3 )
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
@@ -210,3 +212,5 @@ custom_fonts/font = SubResource( 13 )
 text = "Lore Ipsum"
 align = 1
 valign = 1
+
+[connection signal="button_up" from="Panel/HBoxContainer/BackBtnMargin/BackBtn" to="." method="_on_BackBtn_button_up"]
