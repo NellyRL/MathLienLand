@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Lay Low.mp3-1773fd99976eeaf4c2c5c3f196b1642d.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Lay Low.mp3"
+dest_files=[ "res://.import/Lay Low.mp3-1773fd99976eeaf4c2c5c3f196b1642d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

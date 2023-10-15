@@ -18,6 +18,7 @@ func _process(_delta):
 			if Input.is_action_pressed(dir) and is_processing():
 				# Si se pudo mover aviso.
 				if is_processing() and move(dir):
+					$FootStepsSound.play()
 					emit_signal('labyrinth_moved')
 
 func _on_Player_area_entered(area):

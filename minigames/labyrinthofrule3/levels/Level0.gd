@@ -56,6 +56,12 @@ func _ready():
 	
 	set_question_hud()
 	
+func _enter_tree():
+	# Cuando la escena entra al arbol del proyecto, ponemos el tiempo
+	# que lleva el jugador.
+	$CanvasLayer/HUD/Time.text = str(Global.total_labyrinth_time)
+
+
 func set_camera_limits():
 	# Obtenemos las dimensiones del laberinto en 
 	# celdas
@@ -107,6 +113,7 @@ func spawn_items():
 				$Player.tile_dim = items.cell_size
 
 func game_over():
+	$WrongSound.play()
 	$Player.move_allowed = false
 	$Player.hide()
 	yield(get_tree().create_timer(1), 'timeout')
@@ -137,14 +144,9 @@ func check_answer(answer):
 	
 	var correct = Global.labyrinth_questions[Global.current_labyrinth_question][answer][1]
 	if correct:
-		Global.current_labyrinth_question+=1
-		print("Correctas:", Global.current_labyrinth_question)
-		if Global.current_labyrinth_question >= Global.num_labyrinth_questions:
-			Global.current_labyrinth_question=0
-			get_tree().change_scene("res://minigames/labyrinthofrule3/ui/EndScreen.tscn")
-		else:
-			set_question_hud()
-			get_tree().reload_current_scene()
+		$CorrectSound.play()
+		yield($CorrectSound, "finished")
+		next_question()
 	else:
 		print("Incorrecto!")
 		var door_id = $Walls.tile_set.find_tile_by_name(door_ids[answer][0])
@@ -152,6 +154,22 @@ func check_answer(answer):
 		$Walls.set_cellv(door_frames[door_ids[answer][1]], door_id)
 		game_over()
 
+func next_question():
+	get_tree().paused = true
+	var explain = $CanvasLayer/Explanation/MarginContainer/VBoxContainer/TextureRect
+	explain.texture = load(Global.labyrinth_questions[Global.current_labyrinth_question]["explanation"][0])
+	$CanvasLayer/Explanation.visible = true
+	yield($CanvasLayer/Explanation/MarginContainer/VBoxContainer/CloseExplanationBtn, "button_up")
+	$CanvasLayer/Explanation.visible = false
+	get_tree().paused = false
+	Global.current_labyrinth_question+=1
+	print("Correctas:", Global.current_labyrinth_question)
+	if Global.current_labyrinth_question >= Global.num_labyrinth_questions:
+		Global.current_labyrinth_question=0
+		get_tree().change_scene("res://minigames/labyrinthofrule3/ui/EndScreen.tscn")
+	else:
+		set_question_hud()
+		get_tree().reload_current_scene()
 
 func set_question_hud():
 	$CanvasLayer/HUD/Panel/HBoxContainer/QuestionMargin/Question.text = Global.labyrinth_questions[Global.current_labyrinth_question]["question"]
@@ -159,3 +177,8 @@ func set_question_hud():
 	$CanvasLayer/HUD/B/Answer.text = Global.labyrinth_questions[Global.current_labyrinth_question]["answerB"][0]
 	$CanvasLayer/HUD/C/Answer.text = Global.labyrinth_questions[Global.current_labyrinth_question]["answerC"][0]
 	$CanvasLayer/HUD/D/Answer.text = Global.labyrinth_questions[Global.current_labyrinth_question]["answerD"][0]
+
+
+func _on_Timer_timeout():
+	Global.total_labyrinth_time+=1
+	$CanvasLayer/HUD/Time.text = str(Global.total_labyrinth_time)

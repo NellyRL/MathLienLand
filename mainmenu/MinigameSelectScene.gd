@@ -1,5 +1,7 @@
 extends Control
 
+func _enter_tree():
+	MusicController.set_music()
 
 func _on_Exit_pressed():
 	# Salimos

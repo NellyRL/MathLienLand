@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/themes/kenneyUI-blue.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/VCRosdNEUE.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://minigames/labyrinthofrule3/ui/HUD.gd" type="Script" id=3]
+[ext_resource path="res://assets/themes/kenneyUI-red.tres" type="Theme" id=4]
 
 [sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 0.219608, 0.392157, 0.576471, 1 )
@@ -68,6 +69,20 @@ corner_radius_bottom_left = 20
 
 [sub_resource type="Theme" id=8]
 Panel/styles/panel = SubResource( 7 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 60
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 55
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -213,4 +228,56 @@ text = "Lore Ipsum"
 align = 1
 valign = 1
 
+[node name="Time" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+custom_fonts/font = SubResource( 17 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="PausedScreen" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0862745, 0.0784314, 0.0784314, 0.627451 )
+
+[node name="CenterContainer" type="CenterContainer" parent="PausedScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PausedScreen/CenterContainer"]
+margin_left = 404.0
+margin_top = 210.0
+margin_right = 619.0
+margin_bottom = 390.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 40
+
+[node name="Label" type="Label" parent="PausedScreen/CenterContainer/VBoxContainer"]
+margin_right = 215.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 18 )
+text = "PAUSED!"
+align = 1
+valign = 1
+
+[node name="ResumeBtn" type="Button" parent="PausedScreen/CenterContainer/VBoxContainer"]
+pause_mode = 2
+margin_top = 100.0
+margin_right = 215.0
+margin_bottom = 180.251
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "RESUME"
+
 [connection signal="button_up" from="Panel/HBoxContainer/BackBtnMargin/BackBtn" to="." method="_on_BackBtn_button_up"]
+[connection signal="button_up" from="Panel/HBoxContainer/PauseBtnMargin/PauseBtn" to="." method="_on_PauseBtn_button_up"]
+[connection signal="button_up" from="PausedScreen/CenterContainer/VBoxContainer/ResumeBtn" to="." method="_on_ResumeBtn_button_up"]

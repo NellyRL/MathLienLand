@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/ui/titles/labyrinth_gameover.png" type="Texture" id=1]
 [ext_resource path="res://minigames/labyrinthofrule3/ui/EndScreen.gd" type="Script" id=2]
+[ext_resource path="res://general/HooverBtn.gd" type="Script" id=3]
 [ext_resource path="res://assets/themes/kenneyUI-red.tres" type="Theme" id=4]
 [ext_resource path="res://assets/fonts/VCRosdNEUE.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/shaders/starfield_shader_v5.gdshader" type="Shader" id=6]
@@ -75,7 +76,7 @@ margin_right = 824.0
 margin_bottom = 367.0
 size_flags_vertical = 6
 custom_fonts/font = SubResource( 2 )
-text = "Congratulations! You cleared the game!"
+text = "Congratulations! You cleared the game in {seconds} seconds!"
 align = 1
 
 [node name="Separator2" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer"]
@@ -103,6 +104,7 @@ margin_bottom = 50.251
 theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 3 )
 text = "Continue"
+script = ExtResource( 3 )
 
 [node name="Control2" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/GridContainer"]
 margin_left = 543.0
@@ -111,5 +113,5 @@ margin_bottom = 50.0
 size_flags_horizontal = 3
 
 [connection signal="button_up" from="CanvasLayer/MarginContainer/VBoxContainer/GridContainer/Continue" to="." method="_on_Continue_button_up"]
-[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/VBoxContainer/GridContainer/Continue" to="." method="_on_Continue_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/MarginContainer/VBoxContainer/GridContainer/Continue" to="." method="_on_Continue_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/VBoxContainer/GridContainer/Continue" to="CanvasLayer/MarginContainer/VBoxContainer/GridContainer/Continue" method="_on_Btn_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/MarginContainer/VBoxContainer/GridContainer/Continue" to="CanvasLayer/MarginContainer/VBoxContainer/GridContainer/Continue" method="_on_Btn_mouse_exited"]

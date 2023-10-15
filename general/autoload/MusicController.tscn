@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://general/autoload/MusicController.gd" type="Script" id=1]
+[ext_resource path="res://assets/audio/song18.mp3" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/Lay Low.mp3" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/8bitvictory.ogg" type="AudioStream" id=4]
+
+[node name="MusicController" type="Node"]
+script = ExtResource( 1 )
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="LabyrinthMusic" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 3 )
+
+[node name="VictoryLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )

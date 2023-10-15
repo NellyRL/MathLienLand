@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://mainmenu/BaseBtn.tscn" type="PackedScene" id=1]
 [ext_resource path="res://mainmenu/MinigameSelectScene.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/VCRosdNEUE.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/shaders/starfield_shader_v5.gdshader" type="Shader" id=4]
-[ext_resource path="res://assets/audio/song18.mp3" type="AudioStream" id=5]
 [ext_resource path="res://assets/themes/kenneyUI-red.tres" type="Theme" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -219,10 +218,6 @@ size_flags_horizontal = 3
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 3 )
 text = "Exit"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-autoplay = true
 
 [connection signal="pressed" from="OptionBtns/HBoxContainer/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="OptionBtns/HBoxContainer/Exit" to="." method="_on_Exit_pressed"]
