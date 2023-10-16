@@ -44,12 +44,13 @@ func move(direction):
 	$AnimationPlayer.play(orientation)
 	
 	# Tween para hacer mas atractivo el movimiento.
-	# TODO: Cambiar este tween.
 	# Esto es lo que movera al jugador.
-	#print(orientation)
 	var origin = position
 	var end = position + movs[orientation] * tile_dim
 	#print(origin, end)
+	# Por si sucede el caso que el jugador no se pueda mover
+	# y no se haya detectado hasta ahora, comprobamos que 
+	# la funcion process este activa.
 	if is_processing():
 		$MoveTween.interpolate_property(self, "position", origin, end, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$MoveTween.start()
@@ -57,6 +58,7 @@ func move(direction):
 	
 
 
-func _on_MoveTween_tween_completed(object, key):
+func _on_MoveTween_tween_completed(_object, _key):
+	# Una vez termine el tween procedemos a permitir el movimiento de nuevo
 	move_allowed = true
 

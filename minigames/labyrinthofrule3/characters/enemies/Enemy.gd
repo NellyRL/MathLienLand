@@ -1,10 +1,12 @@
 extends "res://minigames/labyrinthofrule3/characters/Character.gd"
 
 func _ready():
-	# Nos vamos a mover asi que impedimos que
-	# se produzca otro movimiento.
+	# La primera vez que se cree el enemigo aun no
+	# queremos que se mueva, puesto que tenemos
+	# que esperar que las paredes esten establecidas
 	move_allowed = false
-	# Elegimos aleatoriamente una direccion.
+	# Elegimos aleatoriamente una direccion por la que empezara
+	# a moverse
 	orientation = movs.keys()[randi() % 4]
 	# Esperamos a que las paredes aparezcan y se 
 	# procesen.
@@ -12,7 +14,7 @@ func _ready():
 	# Volvemos a habilitar el movimiento.
 	move_allowed = true
 
-func _process(delta):
+func _process(_delta):
 	# Si podemos movernos porque ha terminado 
 	# el anterior movimiento.
 	if move_allowed:

@@ -1,15 +1,14 @@
 extends Node
-
+# Variable que contiene las preguntas posibles
 var labyrinth_questions = []
-
+# Variable que indica que cuestion debe ser propuesta
 var current_labyrinth_question = 0
-
+# Maximo de preguntas disponibles
 var num_labyrinth_questions = 5
-
+# Tiempo total que el usuario ha jugado.
 var total_labyrinth_time = 0
 
 # Rellenamos las preguntas con la bateria elegida
-
 func _ready():
 	fill_labyrinth_questions()
 

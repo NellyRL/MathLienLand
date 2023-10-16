@@ -1,32 +1,48 @@
 extends Node2D
 
+# Escenas que representan a los 3 tipos de enemigos que 
+# presenta el juego. En nuestro caso son fantasmas, slimes 
+# y aranyas.
 export (PackedScene) var Enemy_1
 export (PackedScene) var Enemy_2
 export (PackedScene) var Enemy_3
 
+# Escena que contiene la logica de los coleccionables
 export (PackedScene) var Pickup
 
+# Capa del mapa que indica la posicion de los items.
 onready var items = $Items
 
 # Array para guardar las posiciones de las cuatro posiciones
 # de puertas a cerrar en caso de fallo. Tantas como posibles
 # respuestas haya.
 var door_frames = []
+# Numero de opciones de respuesta
 var num_answers = 4
+# Nombres de las 4 opciones. Son empleadas como claves en 
+# distintos diccionarios.
 var answers = ["answerA", "answerB", "answerC", "answerD"]
+# Diccionario cuyas claves son los nombres de las opciones posibles
+# de respuestas y cuyos valores consisten en arrays cuyo primer elemento
+# es el nombre de la baldosa con la que se cerrara el camino que permite
+# responder con una determinada respuesta y cuyo segundo elemento es la posicion
+# que ocupa la celda que representa el marco de puerta que sera sustituida por
+# dicha puerta.
 var door_ids = {"answerA": ["doorA", 0], "answerB": ["doorB", 1], "answerC": ["doorC", 2], "answerD": ["doorD", 3]}
 
 func _ready():
+	# Cuando la escena este lista por primera vez en el arbol del proyecto
+	# Primeramente generamos una semilla para los procesos aleatorios.
 	randomize()
+	# Seguidamente ocultamos los items pues solamente son indicadores
 	$Items.hide()
+	# Establecemos los limites de la camara.
 	set_camera_limits()
 	# Nombres dados a los marcadores de las posiciones
 	# de las puertas.
 	var door_frames_names = ['doorframeA', 
 	"doorframeB", "doorframeC", "doorframeD"]
-	# Por cada marcador nos hemos asegurado de solamente poner una
-	# celda con dicha "baldosa", asi que nos vale con cojer la primera
-	# celda obtenida con ese nombre.
+	
 	#for cell in $Walls.get_used_cells():
 		# Obtenemos su id
 	#	var id = $Walls.get_cellv(cell)
@@ -34,11 +50,17 @@ func _ready():
 	#	var type = $Walls.tile_set.tile_get_name(id)
 	#	print(type)
 	
+	# Por cada marcador nos hemos asegurado de solamente poner una
+	# celda con dicha "baldosa", asi que nos vale con cojer la primera
+	# celda obtenida con ese nombre.
+	# Por cada "marco de puerta" obtenemos el id de la celda y con el id, la
+	# celda en si misma. Esta celda se añade al array de "marcos de puertas"
+	# en orden.
 	for tile_name in door_frames_names:
 		#print(tile_name)
 		var door_frame_id = $Walls.tile_set.find_tile_by_name(tile_name)
 		#print(door_frame_id)
-		var cells_by_id = $Walls.get_used_cells_by_id(door_frame_id)
+		#var cells_by_id = $Walls.get_used_cells_by_id(door_frame_id)
 		#print(cells_by_id)
 		door_frames.append($Walls.get_used_cells_by_id(door_frame_id).front())
 	
@@ -47,19 +69,26 @@ func _ready():
 		print("No se han establecido correctamente las posiciones de las puertas")
 		get_tree().quit()
 	
+	# Procedemos a generar todos los items.
 	spawn_items()
-	$Player.connect("labyrinth_dead", self, "game_over")
-	$Player.connect("labyrinth_answerA", self, "_on_Player_answered_a")
-	$Player.connect("labyrinth_answerB", self, "_on_Player_answered_b")
-	$Player.connect("labyrinth_answerC", self, "_on_Player_answered_c")
-	$Player.connect("labyrinth_answerD", self, "_on_Player_answered_d")
 	
+	# Conectamos las senyales con las funciones que las procesaran.
+	
+	var _ret
+	_ret = $Player.connect("labyrinth_dead", self, "game_over")
+	_ret = $Player.connect("labyrinth_answerA", self, "_on_Player_answered_a")
+	_ret = $Player.connect("labyrinth_answerB", self, "_on_Player_answered_b")
+	_ret = $Player.connect("labyrinth_answerC", self, "_on_Player_answered_c")
+	_ret = $Player.connect("labyrinth_answerD", self, "_on_Player_answered_d")
+	
+	# Establecemos la pregunta y sus opciones en la interfaz de usuario.
 	set_question_hud()
 	
 func _enter_tree():
-	# Cuando la escena entra al arbol del proyecto, ponemos el tiempo
-	# que lleva el jugador.
+	# Cada vez que la escena entra al arbol del proyecto, ponemos el tiempo
+	# que lleva el jugador y nos aseguramos que la musica sea la correcta.
 	$CanvasLayer/HUD/Time.text = str(Global.total_labyrinth_time)
+	MusicController.set_music()
 
 
 func set_camera_limits():
@@ -90,25 +119,43 @@ func spawn_items():
 		# Ahora procedemos a ver que tipo de item es:
 		match type:
 			"enemies_spawner1":
+				# Si es el primer tipo de enemigo, 
+				# instanciamos la escena correspondiente, 
+				# asignamos la posicion indicada y el tamanyo
+				# de celda del mapa. Finalmente anyadimos la instancia
+				# a la escena.
 				var ghost = Enemy_1.instance()
 				ghost.position = pos
 				ghost.tile_dim = items.cell_size
 				add_child(ghost)
 			"enemies_spawner2":
+				# Si es el segundo tipo de enemigo, 
+				# realizamos lo mismo que con el primero
+				# pero instanciando el correspondiente tipo
 				var slime = Enemy_2.instance()
 				slime.position = pos
 				slime.tile_dim = items.cell_size
 				add_child(slime)
 			"enemies_spawner3":
+				# Si es el tercer tipo de enemigo, 
+				# realizamos lo mismo que con el primero
+				# pero instanciando el correspondiente tipo
 				var spider = Enemy_3.instance()
 				spider.position = pos
 				spider.tile_dim = items.cell_size
 				add_child(spider)
 			"answerA", "answerB", "answerC", "answerD":
+				# Si es un objeto que se pueda recojer, 
+				# instanciamos la escena correspondiente
+				# e inicializamos dicha instancia para 
+				# posteriormente anyadirla a la escena.
 				var answer_flag =  Pickup.instance()
 				answer_flag.init(type, pos)
 				add_child(answer_flag)
 			"player_spawner":
+				# Finalmente, si es el punto de inicio del jugador,
+				# le asignamos la posicion y el tamanyo de celda
+				# correspondiente.
 				$Player.position = pos
 				$Player.tile_dim = items.cell_size
 
@@ -126,6 +173,11 @@ func game_over():
 	$Player/CollisionShape2D.set_deferred("disabled", false)
 	
 
+# A continuacion se implementarion las 4 funciones que procesan las
+# senyales de opciones escogidas. Todas ellas llaman a la funcion 
+# check_answer con la clave apropiada para corroborar si la opcion
+# elegida ha sido la correcta o no.
+
 func _on_Player_answered_a():
 	check_answer(answers[0])
 	
@@ -139,15 +191,27 @@ func _on_Player_answered_d():
 	check_answer(answers[3])
 
 func check_answer(answer):
+	# Funcion para comprobar si la opcion elegida ha sido la
+	# correcta. 
+	
+	# Comprobamos que la clave indicada sea valida.
 	if not answer in answers:
 		return
 	
+	# Comprobamos si la opcion elegida es correcta.
 	var correct = Global.labyrinth_questions[Global.current_labyrinth_question][answer][1]
+	
+	# Si es correcta, procedemos a ejecutar el sonido 
+	# de opcion correcta, esperamos a que termine e iniciamos
+	# el procedimiento de cambio de pregunta.
 	if correct:
 		$CorrectSound.play()
 		yield($CorrectSound, "finished")
 		next_question()
 	else:
+		# Si no fue correcta la opcion, colocamos la puerta correspondiente,
+		# bloqueando la opcion correspondiente y procedemos a ejecutar 
+		# la funcion de "fallo"
 		print("Incorrecto!")
 		var door_id = $Walls.tile_set.find_tile_by_name(door_ids[answer][0])
 		#print(door_id)
@@ -155,30 +219,48 @@ func check_answer(answer):
 		game_over()
 
 func next_question():
+	# Para proceder a la siguiente pregunta, en primer lugar pausamos el juego
 	get_tree().paused = true
+	# Una vez pausado el juego, preparamos la explicacion a mostrar
 	var explain = $CanvasLayer/Explanation/MarginContainer/VBoxContainer/TextureRect
 	explain.texture = load(Global.labyrinth_questions[Global.current_labyrinth_question]["explanation"][0])
+	# Mostramos la explicacion
 	$CanvasLayer/Explanation.visible = true
+	# Esperamos a que el usuario cierre la explicacion.
 	yield($CanvasLayer/Explanation/MarginContainer/VBoxContainer/CloseExplanationBtn, "button_up")
+	# Dejamos de mostrar la explicacion
 	$CanvasLayer/Explanation.visible = false
+	# Reanudamos el juego
 	get_tree().paused = false
+	# Avanzamos en las preguntas
 	Global.current_labyrinth_question+=1
 	print("Correctas:", Global.current_labyrinth_question)
+	# Comprobamos si era la ultima pregunta disponible o no.
 	if Global.current_labyrinth_question >= Global.num_labyrinth_questions:
+		# Si era la ultima pregunta disponible, reseteamos la pregunta actual
+		# para el siguiente juego.
 		Global.current_labyrinth_question=0
-		get_tree().change_scene("res://minigames/labyrinthofrule3/ui/EndScreen.tscn")
+		# Cambiamos a la escena final.
+		var _ret = get_tree().change_scene("res://minigames/labyrinthofrule3/ui/EndScreen.tscn")
 	else:
+		# Si no es la ultima pregunta, significa que qun hay preguntas.
+		# Mostramos la siguiente pregunta al usuario
 		set_question_hud()
-		get_tree().reload_current_scene()
+		# Recargamos la escena.
+		var _ret = get_tree().reload_current_scene()
 
 func set_question_hud():
+	# Funcion que se encarga de mostrar la pregunta correspondiente
+	# con sus opciones en pantalla
 	$CanvasLayer/HUD/Panel/HBoxContainer/QuestionMargin/Question.text = Global.labyrinth_questions[Global.current_labyrinth_question]["question"]
 	$CanvasLayer/HUD/A/Answer.text = Global.labyrinth_questions[Global.current_labyrinth_question]["answerA"][0]
 	$CanvasLayer/HUD/B/Answer.text = Global.labyrinth_questions[Global.current_labyrinth_question]["answerB"][0]
 	$CanvasLayer/HUD/C/Answer.text = Global.labyrinth_questions[Global.current_labyrinth_question]["answerC"][0]
 	$CanvasLayer/HUD/D/Answer.text = Global.labyrinth_questions[Global.current_labyrinth_question]["answerD"][0]
 
-
+# Funcion que realiza el conteo del tiempo que el usuario esta jugando 
+# juego. Su funcion consiste en, cada segundo, aumentar el contador de
+# segundos del script global y mostrar el total en pantalla.
 func _on_Timer_timeout():
 	Global.total_labyrinth_time+=1
 	$CanvasLayer/HUD/Time.text = str(Global.total_labyrinth_time)
