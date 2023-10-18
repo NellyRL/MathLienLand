@@ -7,7 +7,7 @@ var lab_music_is_playing = false
 var victory_loop_is_playing = false
 
 # Variable de documentacion. Indica las escenas posibles del juego.
-var scenes_names = ["MainMenu", "MinigameSelectScene", "StartScreen", "EndScreen", "Level0"]
+var scenes_names = ["MainMenu", "MinigameSelectScene", "StartScreenLR3", "EndScreenLR3", "Level0LR3"]
 
 # Funcion que se asegura que este sonando el tema del menu
 func play_menu_music():
@@ -49,16 +49,21 @@ func stop_vict_music():
 # Se encarga de hacer sonal el tema correspondiente en cada momento.
 func set_music():
 	var name = get_tree().current_scene.name
+	#print(name)
 	match name:
 		"MainMenu", "MinigameSelectScene":
 			stop_lab_music()
 			stop_vict_music()
 			play_menu_music()
-		"StartScreen", "Level0":
+		"StartScreenLR3", "Level0LR3":
 			stop_menu_music()
 			stop_vict_music()
 			play_lab_music()
-		"EndScreen":
+		"EndScreenLR3":
 			stop_menu_music()
 			stop_lab_music()
 			play_vict_music()
+		_:
+			stop_lab_music()
+			stop_menu_music()
+			stop_vict_music()

@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/characters/Spritesheets/used/ghost_enemy1.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 23, 33 )
+extents = Vector2( 23, 30 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -27,7 +27,7 @@ tracks/0/keys = {
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 1, 0 )
+position = Vector2( 1, -1 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." index="3"]

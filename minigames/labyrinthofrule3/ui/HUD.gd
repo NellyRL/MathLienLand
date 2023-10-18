@@ -7,7 +7,7 @@ func _on_BackBtn_button_up():
 	# de preguntas y cambiamos de escena.
 	Global.current_labyrinth_question = 0
 	Global.total_labyrinth_time = 0
-	var _ret = get_tree().change_scene("res://minigames/labyrinthofrule3/ui/StartScreen.tscn")
+	var _ret = get_tree().change_scene("res://minigames/labyrinthofrule3/ui/StartScreenLR3.tscn")
 
 
 

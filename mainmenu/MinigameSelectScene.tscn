@@ -39,7 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 
-[node name="Backgorund" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -88,6 +88,7 @@ margin_right = 255.0
 margin_bottom = 158.0
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+next_scene_path = "res://minigames/fractionrace/ui/StartScreenFR.tscn"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MinigameBtns/BtnGrid/FractionRace"]
 anchor_right = 1.0
@@ -105,7 +106,7 @@ margin_bottom = 158.0
 focus_mode = 2
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-next_scene_path = "res://minigames/labyrinthofrule3/ui/StartScreen.tscn"
+next_scene_path = "res://minigames/labyrinthofrule3/ui/StartScreenLR3.tscn"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MinigameBtns/BtnGrid/Labyrinth"]
 anchor_right = 1.0

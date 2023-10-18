@@ -22,6 +22,6 @@ func _on_Continue_button_up():
 	# Esto se realiza aqui para facilitar el hecho de que continuar
 	# implique moverse a distintas escenas segun hayan mas niveles, se
 	# este en modo historia, etc.
-	var _ret = get_tree().change_scene("res://minigames/labyrinthofrule3/ui/StartScreen.tscn")
+	var _ret = get_tree().change_scene("res://minigames/labyrinthofrule3/ui/StartScreenLR3.tscn")
 
 

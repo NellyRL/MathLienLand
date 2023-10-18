@@ -75,7 +75,7 @@ func _ready():
 	# Conectamos las senyales con las funciones que las procesaran.
 	
 	var _ret
-	_ret = $Player.connect("labyrinth_dead", self, "game_over")
+	_ret = $Player.connect("labyrinth_dead", self, "start_over")
 	_ret = $Player.connect("labyrinth_answerA", self, "_on_Player_answered_a")
 	_ret = $Player.connect("labyrinth_answerB", self, "_on_Player_answered_b")
 	_ret = $Player.connect("labyrinth_answerC", self, "_on_Player_answered_c")
@@ -159,7 +159,7 @@ func spawn_items():
 				$Player.position = pos
 				$Player.tile_dim = items.cell_size
 
-func game_over():
+func start_over():
 	$WrongSound.play()
 	$Player.move_allowed = false
 	$Player.hide()
@@ -216,7 +216,7 @@ func check_answer(answer):
 		var door_id = $Walls.tile_set.find_tile_by_name(door_ids[answer][0])
 		#print(door_id)
 		$Walls.set_cellv(door_frames[door_ids[answer][1]], door_id)
-		game_over()
+		start_over()
 
 func next_question():
 	# Para proceder a la siguiente pregunta, en primer lugar pausamos el juego
@@ -241,7 +241,7 @@ func next_question():
 		# para el siguiente juego.
 		Global.current_labyrinth_question=0
 		# Cambiamos a la escena final.
-		var _ret = get_tree().change_scene("res://minigames/labyrinthofrule3/ui/EndScreen.tscn")
+		var _ret = get_tree().change_scene("res://minigames/labyrinthofrule3/ui/EndScreenLR3.tscn")
 	else:
 		# Si no es la ultima pregunta, significa que qun hay preguntas.
 		# Mostramos la siguiente pregunta al usuario
