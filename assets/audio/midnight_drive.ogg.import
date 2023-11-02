@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/midnight_drive.ogg-0b37972ed617d385e07d4dd3f8865a78.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/midnight_drive.ogg"
+dest_files=[ "res://.import/midnight_drive.ogg-0b37972ed617d385e07d4dd3f8865a78.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
