@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/619008__mrrap4food__applause-1.mp3-9a707a6c0168ef97b0fe4fcdd8bf6621.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/619008__mrrap4food__applause-1.mp3"
+dest_files=[ "res://.import/619008__mrrap4food__applause-1.mp3-9a707a6c0168ef97b0fe4fcdd8bf6621.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

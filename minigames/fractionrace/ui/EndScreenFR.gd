@@ -3,7 +3,8 @@ extends Control
 var path_to_stars = "res://assets/maze/Other/"
 var default_start_position = "[center][rainbow]"
 var default_start_time_info = "[center][wave freq=10.0]"
-var default_time_info = "Congratulations!!\nYou completed the lap in "
+var default_time_info = "Congratulations!! You completed the lap\nin "
+var extra_info = " seconds! And answering correctly " + str(Global.current_race_question) + " questions!"
 var gold_color = "[color=#FFD700]"
 var silver_color = "[color=#C0C0C0]"
 var bronze_color = "[color=#CD7F32]"
@@ -39,12 +40,12 @@ func _enter_tree():
 		image = path_to_stars + "rock.png"
 		
 	
-	# Obtenemos el nodo donde se mostrara el mensaje de fin de juego al 
+	# Obtenemos un nodo donde se mostrara el mensaje de fin de juego al 
 	# jugador
 	var position_lab = $CanvasLayer/MarginContainer/VBoxContainer/Position
 	
-	# Formateamos el mensaje para indicar al jugador el tiempo empleado
-	# para completar el minijuego.
+	# Formateamos el mensaje para indicar al jugador la posicion en la
+	# que completo el minijuego.
 	
 	position_lab.bbcode_text = default_start_position 
 	position_lab.bbcode_text += "[img]"+ image +"[/img]"
@@ -56,13 +57,19 @@ func _enter_tree():
 	var info_lab = $CanvasLayer/MarginContainer/VBoxContainer/TimeInfo
 	
 	# Formateamos el mensaje para indicar al jugador el tiempo empleado
-	# para completar el minijuego.
+	# para completar el minijuego, asi como las preguntas respondidas.
 	
 	info_lab.bbcode_text = default_start_time_info
 	info_lab.bbcode_text += color_to_set 
 	info_lab.bbcode_text += default_time_info
-	info_lab.bbcode_text += str(Global.total_race_time) + " seconds![/color][/wave][/center]"
+	info_lab.bbcode_text += str(Global.total_race_time) 
+	info_lab.bbcode_text +=  " seconds, answering correctly to " 
+	info_lab.bbcode_text += str(Global.current_race_question)
+	info_lab.bbcode_text += " questions![/color][/wave][/center]"
 	
+	# Si el jugador ha sido de los primeros lo celebramos con aplausos.
+	if Global.final_position == 1 or Global.final_position == 2:
+		$Applause.play()
 	
 	# Reseteamos las variables que participan en el minijuego de la carrera
 	# como contadores.

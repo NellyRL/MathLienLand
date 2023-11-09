@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/themes/kenneyUI-blue.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/VCRosdNEUE.ttf" type="DynamicFontData" id=2]
@@ -18,7 +18,11 @@ bg_color = Color( 0.752941, 0.94902, 0.835294, 1 )
 Panel/styles/panel = SubResource( 9 )
 
 [sub_resource type="DynamicFont" id=11]
-size = 25
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 24
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=12]
@@ -58,7 +62,7 @@ size_flags_vertical = 3
 custom_constants/separation = 20
 
 [node name="BackBtnMargin" type="MarginContainer" parent="Panel/HBoxContainer"]
-margin_right = 171.0
+margin_right = 169.0
 margin_bottom = 128.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 20
@@ -69,7 +73,7 @@ custom_constants/margin_bottom = 50
 [node name="BackBtn" type="Button" parent="Panel/HBoxContainer/BackBtnMargin"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 151.0
+margin_right = 149.0
 margin_bottom = 78.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -77,8 +81,8 @@ custom_fonts/font = SubResource( 11 )
 text = "BACK"
 
 [node name="QuestionMargin" type="MarginContainer" parent="Panel/HBoxContainer"]
-margin_left = 191.0
-margin_right = 832.0
+margin_left = 189.0
+margin_right = 826.0
 margin_bottom = 128.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -91,19 +95,35 @@ custom_constants/margin_bottom = 10
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/QuestionMargin"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 631.0
+margin_right = 627.0
 margin_bottom = 118.0
 alignment = 1
 
-[node name="question" type="TextureRect" parent="Panel/HBoxContainer/QuestionMargin/VBoxContainer"]
-margin_right = 621.0
-margin_bottom = 52.0
+[node name="QuestionContainer" type="HBoxContainer" parent="Panel/HBoxContainer/QuestionMargin/VBoxContainer"]
+margin_right = 617.0
+margin_bottom = 48.0
+custom_constants/separation = 40
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/QuestionMargin/VBoxContainer/QuestionContainer"]
+margin_left = 73.0
+margin_top = 12.0
+margin_right = 435.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 16 )
+text = "Choose the correct answer to:"
+
+[node name="question" type="TextureRect" parent="Panel/HBoxContainer/QuestionMargin/VBoxContainer/QuestionContainer"]
+margin_left = 475.0
+margin_right = 543.0
+margin_bottom = 48.0
 texture = ExtResource( 5 )
 stretch_mode = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/QuestionMargin/VBoxContainer"]
-margin_top = 56.0
-margin_right = 621.0
+margin_top = 52.0
+margin_right = 617.0
 margin_bottom = 108.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -111,8 +131,8 @@ theme = ExtResource( 1 )
 custom_constants/separation = 30
 
 [node name="answerA" type="Button" parent="Panel/HBoxContainer/QuestionMargin/VBoxContainer/HBoxContainer"]
-margin_right = 132.0
-margin_bottom = 52.0
+margin_right = 131.0
+margin_bottom = 56.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -125,9 +145,9 @@ texture = ExtResource( 4 )
 stretch_mode = 4
 
 [node name="answerB" type="Button" parent="Panel/HBoxContainer/QuestionMargin/VBoxContainer/HBoxContainer"]
-margin_left = 162.0
-margin_right = 295.0
-margin_bottom = 52.0
+margin_left = 161.0
+margin_right = 293.0
+margin_bottom = 56.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -140,9 +160,9 @@ texture = ExtResource( 6 )
 stretch_mode = 4
 
 [node name="answerC" type="Button" parent="Panel/HBoxContainer/QuestionMargin/VBoxContainer/HBoxContainer"]
-margin_left = 325.0
-margin_right = 458.0
-margin_bottom = 52.0
+margin_left = 323.0
+margin_right = 455.0
+margin_bottom = 56.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -155,9 +175,9 @@ texture = ExtResource( 3 )
 stretch_mode = 4
 
 [node name="answerD" type="Button" parent="Panel/HBoxContainer/QuestionMargin/VBoxContainer/HBoxContainer"]
-margin_left = 488.0
-margin_right = 621.0
-margin_bottom = 52.0
+margin_left = 485.0
+margin_right = 617.0
+margin_bottom = 56.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -197,8 +217,8 @@ align = 1
 valign = 1
 
 [node name="PauseBtnMargin" type="MarginContainer" parent="Panel/HBoxContainer"]
-margin_left = 852.0
-margin_right = 1024.0
+margin_left = 846.0
+margin_right = 1024.32
 margin_bottom = 128.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 20
@@ -209,12 +229,12 @@ custom_constants/margin_bottom = 50
 [node name="PauseBtn" type="Button" parent="Panel/HBoxContainer/PauseBtnMargin"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 152.0
+margin_right = 158.324
 margin_bottom = 78.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 11 )
-text = "PAUSE"
+text = "PAUSE (HELP)"
 
 [node name="Time" type="Label" parent="."]
 anchor_left = 0.5
@@ -274,10 +294,9 @@ custom_fonts/font = SubResource( 15 )
 text = "RESUME"
 
 [node name="StartScreen" type="ColorRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.0862745, 0.0784314, 0.0784314, 0 )
+color = Color( 0.0196078, 0.0196078, 0.0196078, 0.454902 )
 
 [node name="CenterContainer" type="CenterContainer" parent="StartScreen"]
 anchor_right = 1.0
@@ -311,6 +330,7 @@ valign = 1
 
 [node name="StartTimer" type="Timer" parent="StartScreen"]
 pause_mode = 2
+wait_time = 3.0
 
 [connection signal="button_up" from="Panel/HBoxContainer/BackBtnMargin/BackBtn" to="." method="_on_BackBtn_button_up"]
 [connection signal="button_up" from="Panel/HBoxContainer/QuestionMargin/VBoxContainer/HBoxContainer/answerA" to="." method="_on_answerA_button_up"]
