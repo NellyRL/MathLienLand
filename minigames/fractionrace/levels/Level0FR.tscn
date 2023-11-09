@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://minigames/fractionrace/tileset/extra_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://minigames/fractionrace/tileset/racingtracktileset.tres" type="TileSet" id=2]
 [ext_resource path="res://minigames/fractionrace/characters/CharacterP.tscn" type="PackedScene" id=3]
 [ext_resource path="res://minigames/fractionrace/levels/Level0FR.gd" type="Script" id=4]
+[ext_resource path="res://minigames/fractionrace/ui/HUDFR.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=6]
 resource_local_to_scene = true
@@ -76,7 +77,6 @@ sprite = 3
 position = Vector2( 10, -319 )
 curve = SubResource( 4 )
 normal_speed = 250
-acceleration = 2
 sprite = 4
 
 [node name="Goal" type="Area2D" parent="."]
@@ -92,5 +92,12 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUDFR" parent="CanvasLayer" instance=ExtResource( 5 )]
+
+[node name="Time" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Goal" to="." method="_on_Goal_area_entered"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="Time" to="." method="_on_Time_timeout"]

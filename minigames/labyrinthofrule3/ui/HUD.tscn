@@ -11,11 +11,11 @@ bg_color = Color( 0.219608, 0.392157, 0.576471, 1 )
 [sub_resource type="Theme" id=16]
 Panel/styles/panel = SubResource( 15 )
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=20]
 bg_color = Color( 0.219608, 0.392157, 0.576471, 1 )
 
 [sub_resource type="Theme" id=10]
-Panel/styles/panel = SubResource( 9 )
+Panel/styles/panel = SubResource( 20 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 25

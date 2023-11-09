@@ -8,9 +8,25 @@ var num_labyrinth_questions = 5
 # Tiempo total que el usuario ha jugado.
 var total_labyrinth_time = 0
 
+# Variable que contiene las preguntas posibles 
+# para el juego de carreras
+var race_questions = []
+# Variable que indica que cuestion debe ser propuesta
+# en la carrera
+var current_race_question = 0
+# Maximo de preguntas disponibles en la carrera
+var num_race_questions = 8
+# Tiempo total que el usuario ha jugado la carrera.
+var total_race_time = 0
+# Variable que guarda la posicion final del jugador en
+# la carrera.
+var final_position = -1
+
+
 # Rellenamos las preguntas con la bateria elegida
 func _ready():
 	fill_labyrinth_questions()
+	fill_race_questions()
 
 func fill_labyrinth_questions():
 	var question1 = {}
@@ -60,4 +76,70 @@ func fill_labyrinth_questions():
 	
 	labyrinth_questions = [question1, question2, question3, question4, question5]
 	
-
+func fill_race_questions():
+	var question1 = {}
+	
+	question1["question"] = "res://assets/race_questions/q1.png"
+	question1["answerA"] = ["res://assets/race_questions/q1a1.png", true]
+	question1["answerB"] = ["res://assets/race_questions/q1a2.png", false]
+	question1["answerC"] = ["res://assets/race_questions/q1a3.png", false]
+	question1["answerD"] = ["res://assets/race_questions/q1a4.png", false]
+	
+	var question2 = {}
+	
+	question2["question"] = "res://assets/race_questions/q2.png"
+	question2["answerA"] = ["res://assets/race_questions/q2a1.png", false]
+	question2["answerB"] = ["res://assets/race_questions/q2a2.png", false]
+	question2["answerC"] = ["res://assets/race_questions/q2a3.png", true]
+	question2["answerD"] = ["res://assets/race_questions/q2a4.png", false]
+	
+	var question3 = {}
+	
+	question3["question"] = "res://assets/race_questions/q3.png"
+	question3["answerA"] = ["res://assets/race_questions/q3a1.png", false]
+	question3["answerB"] = ["res://assets/race_questions/q3a2.png", false]
+	question3["answerC"] = ["res://assets/race_questions/q3a3.png", false]
+	question3["answerD"] = ["res://assets/race_questions/q3a4.png", true]
+	
+	var question4 = {}
+	
+	question4["question"] = "res://assets/race_questions/q4.png"
+	question4["answerA"] = ["res://assets/race_questions/q4a1.png", true]
+	question4["answerB"] = ["res://assets/race_questions/q4a2.png", false]
+	question4["answerC"] = ["res://assets/race_questions/q4a3.png", false]
+	question4["answerD"] = ["res://assets/race_questions/q4a4.png", false]
+	
+	var question5 = {}
+	
+	question5["question"] = "res://assets/race_questions/q5.png"
+	question5["answerA"] = ["res://assets/race_questions/q5a1.png", false]
+	question5["answerB"] = ["res://assets/race_questions/q5a2.png", false]
+	question5["answerC"] = ["res://assets/race_questions/q5a3.png", true]
+	question5["answerD"] = ["res://assets/race_questions/q5a4.png", false]
+	
+	var question6 = {}
+	
+	question6["question"] = "res://assets/race_questions/q6.png"
+	question6["answerA"] = ["res://assets/race_questions/q6a1.png", false]
+	question6["answerB"] = ["res://assets/race_questions/q6a2.png", true]
+	question6["answerC"] = ["res://assets/race_questions/q6a3.png", false]
+	question6["answerD"] = ["res://assets/race_questions/q6a4.png", false]
+	
+	var question7 = {}
+	
+	question7["question"] = "res://assets/race_questions/q7.png"
+	question7["answerA"] = ["res://assets/race_questions/q7a1.png", false]
+	question7["answerB"] = ["res://assets/race_questions/q7a2.png", false]
+	question7["answerC"] = ["res://assets/race_questions/q7a3.png", true]
+	question7["answerD"] = ["res://assets/race_questions/q7a4.png", false]
+	
+	var question8 = {}
+	
+	question8["question"] = "res://assets/race_questions/q8.png"
+	question8["answerA"] = ["res://assets/race_questions/q8a1.png", false]
+	question8["answerB"] = ["res://assets/race_questions/q8a2.png", false]
+	question8["answerC"] = ["res://assets/race_questions/q8a3.png", false]
+	question8["answerD"] = ["res://assets/race_questions/q8a4.png", true]
+	
+	race_questions = [question1, question2, question3, question4, question5, question6, question7, question8]
+	
