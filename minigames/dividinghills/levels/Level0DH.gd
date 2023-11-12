@@ -13,17 +13,17 @@ var current_question = {"type": 0, "text": "", "correct_answer":-1,
 var screensize
 var hills = Array()
 var score = 0
+var can_move = true
 
 func _ready():
 	randomize()
-	
 	# Conectamos las senyales de contestacion
 	var _ret
 	_ret = $CanvasLayer/HUDDH.connect("hills_answerA", self, "_on_Player_answered_a")
 	_ret = $CanvasLayer/HUDDH.connect("hills_answerB", self, "_on_Player_answered_b")
 	_ret = $CanvasLayer/HUDDH.connect("hills_answerC", self, "_on_Player_answered_c")
 	_ret = $CanvasLayer/HUDDH.connect("hills_answerD", self, "_on_Player_answered_d")
-	
+	_ret = $Player.connect("game_over", self, "game_over")
 	# Generamos las primeras colinas
 	hills = Array()
 	screensize = get_viewport().get_visible_rect().size
@@ -39,11 +39,14 @@ func _ready():
 	
 func _process(_delta):
 	var target_x = hills[-1].x
+	var target_y = hills[-1].y
 	if target_x < $Player.position.x + screensize.x*4:
 		generate_hills()
 		var pickup = collectible.instance()
-		pickup.position = Vector2(target_x, 0)
+		pickup.position = Vector2(target_x, target_y-32)
 		add_child(pickup)
+		var _ret 
+		_ret = pickup.connect("chest_collected", self, "pop_up_question")
 	
 func generate_hills():
 	# PREGUNTAR
@@ -192,10 +195,16 @@ func _on_Player_answered_d():
 	check_answer(int(current_question["options"]["D"]))
 
 func check_answer(answer):
+	var restart_timer = false
+	if !$Player/GameOverTimer.is_stopped():
+		restart_timer = true
+		$Player/GameOverTimer.stop()
+
 	var feed_text
 	if answer == current_question["correct_answer"]:
 		feed_text = "Correct!! Well done!! \nYou got 10 additional coins"
 		score += 10
+		$Player.refuel()
 		print(score)
 	else:
 		feed_text = "Ups, wrong answer!"
@@ -207,6 +216,10 @@ func check_answer(answer):
 	enable_player_answer()
 	yield($CanvasLayer/HUDDH, "continue_pressed")
 	$CanvasLayer/HUDDH/MarginContainer/Panel2.visible = false
+	$CanvasLayer/HUDDH/MarginContainer/Panel.visible = false
+	can_move = true
+	if restart_timer:
+		$Player/GameOverTimer.start()
 
 func disable_player_answer():
 	$CanvasLayer/HUDDH/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/A.disabled = true
@@ -227,3 +240,10 @@ func euclidean_gdc(n1, n2):
 		n2 = n1%n2
 		n1 = aux
 	return n1
+
+func pop_up_question():
+	can_move = false
+	$CanvasLayer/HUDDH/MarginContainer/Panel.visible = true
+
+func game_over():
+	print("Game over!")

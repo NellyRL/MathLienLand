@@ -37,6 +37,7 @@ custom_constants/margin_left = 250
 custom_constants/margin_bottom = 150
 
 [node name="Panel" type="Panel" parent="MarginContainer"]
+visible = false
 margin_left = 250.0
 margin_top = 150.0
 margin_right = 774.0

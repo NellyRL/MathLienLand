@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/characters/drivers_by_parts/cars/shipBeige.png" type="Texture" id=1]
 [ext_resource path="res://minigames/dividinghills/characters/player/Wheel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://minigames/dividinghills/characters/player/Player.gd" type="Script" id=3]
+[ext_resource path="res://assets/characters/drivers_by_parts/characters/alienBeigeDriver.png" type="Texture" id=4]
 
 [node name="Player" type="RigidBody2D" groups=["dhplayer"]]
 gravity_scale = 25.0
@@ -33,3 +34,12 @@ polygon = PoolVector2Array( -64, -24, -48, -24, -16, -32, 16, -32, 48, -24, 64, 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 limit_left = 0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -48 )
+texture = ExtResource( 4 )
+
+[node name="GameOverTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]
