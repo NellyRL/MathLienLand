@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://minigames/dividinghills/levels/Level0DH.gd" type="Script" id=1]
+[ext_resource path="res://minigames/dividinghills/characters/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://minigames/dividinghills/ui/HUDDH.tscn" type="PackedScene" id=3]
+[ext_resource path="res://minigames/dividinghills/collectibles/Chest.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 705, 1000 )
+
+[node name="Level0DH" type="Node2D"]
+script = ExtResource( 1 )
+collectible = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 504, 152 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( -768, 120 )
+shape = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUDDH" parent="CanvasLayer" instance=ExtResource( 3 )]
