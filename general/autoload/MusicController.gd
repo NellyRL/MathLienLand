@@ -7,6 +7,7 @@ var lab_music_is_playing = false
 var victory_loop_is_playing = false
 var race_music_is_playing = false
 var race_vict_music_is_playing = false
+var hills_music_is_playing = false
 
 # Variable de documentacion. Indica las escenas posibles del juego.
 var scenes_names = ["MainMenu", "MinigameSelectScene", "StartScreenLR3", "EndScreenLR3", "Level0LR3"]
@@ -72,6 +73,18 @@ func stop_race_vict_music():
 		$RaceVictMusic.stop()
 		race_vict_music_is_playing = false
 	
+# Funcion que se asegura que este sonando el tema de
+# hills
+func play_hills_music():
+	if not hills_music_is_playing:
+		$HillsMusic.play()
+		hills_music_is_playing = true
+
+# Funcion que se asegura que NO este sonando el tema de carreras
+func stop_hills_music():
+	if hills_music_is_playing:
+		$HillsMusic.stop()
+		hills_music_is_playing = false
 
 # Funcion a ser llamada cuando cada escena entre al arbol del proyecto
 # Se encarga de hacer sonal el tema correspondiente en cada momento.
@@ -84,31 +97,43 @@ func set_music():
 			stop_vict_music()
 			stop_race_music()
 			stop_race_vict_music()
+			stop_hills_music()
 			play_menu_music()
 		"StartScreenLR3", "Level0LR3":
 			stop_menu_music()
 			stop_vict_music()
 			stop_race_music()
 			stop_race_vict_music()
+			stop_hills_music()
 			play_lab_music()
 		"EndScreenLR3":
 			stop_lab_music()
 			stop_menu_music()
 			stop_race_music()
 			stop_race_vict_music()
+			stop_hills_music()
 			play_vict_music()
 		"StartScreenFR", "Level0FR":
 			stop_lab_music()
 			stop_menu_music()
 			stop_vict_music()
 			stop_race_vict_music()
+			stop_hills_music()
 			play_race_music()
 		"EndScreenFR":
 			stop_lab_music()
 			stop_menu_music()
 			stop_vict_music()
 			stop_race_music()
+			stop_hills_music()
 			play_race_vict_music()
+		"StartScreenDH", "Level0DH":
+			stop_lab_music()
+			stop_menu_music()
+			stop_vict_music()
+			stop_race_music()
+			stop_race_vict_music()
+			play_hills_music()
 		_:
 			stop_music()
 
@@ -118,4 +143,5 @@ func stop_music():
 	stop_vict_music()
 	stop_race_music()
 	stop_race_vict_music()
+	stop_hills_music()
 	

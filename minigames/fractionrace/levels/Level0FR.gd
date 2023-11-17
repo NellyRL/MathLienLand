@@ -15,7 +15,7 @@ var acceleration_rivals = 6
 var acceleration_player = 4.5
 # Intervalo en segundos para intentar acelerar
 # a los rivales
-var seconds_till_next_acceleration_try_rivals = 5
+var seconds_till_next_acceleration_try_rivals = 10
 # Tiempo para empezar el juego
 var countdown = 3
 # Titulos que acompanyan la cuenta atras

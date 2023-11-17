@@ -46,7 +46,7 @@ func refuel():
 	fuel = 100
 
 func use_fuel(delta):
-	fuel -= 30*delta
+	fuel -= 20*delta
 	fuel = clamp(fuel, 0, 100)
 
 

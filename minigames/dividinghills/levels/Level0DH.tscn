@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://minigames/dividinghills/levels/Level0DH.gd" type="Script" id=1]
 [ext_resource path="res://minigames/dividinghills/characters/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://minigames/dividinghills/ui/HUDDH.tscn" type="PackedScene" id=3]
 [ext_resource path="res://minigames/dividinghills/collectibles/Chest.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/background/Flat/sky.png" type="Texture" id=5]
+[ext_resource path="res://minigames/dividinghills/levels/Clouds.gd" type="Script" id=6]
+[ext_resource path="res://assets/background/Flat/clouds1.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 705, 1000 )
@@ -26,3 +29,54 @@ shape = SubResource( 1 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUDDH" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Sky"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1024, 1024 )
+
+[node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 320, 1648 )
+motion_scale = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1990, 0 )
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Clouds"]
+position = Vector2( 8, 496 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2002, 206 )
+
+[node name="Clouds2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 976, -704 )
+motion_scale = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1990, 0 )
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Clouds2"]
+position = Vector2( 8, 496 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2002, 206 )
+
+[node name="Clouds3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 1016, -528 )
+motion_scale = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1990, 0 )
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Clouds3"]
+position = Vector2( 8, 496 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2002, 206 )

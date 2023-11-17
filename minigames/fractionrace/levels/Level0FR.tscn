@@ -61,25 +61,21 @@ tile_data = PoolIntArray( 1507337, 91, 0, 2359280, 90, 0, 3080201, 91, 0 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 8, 2 )
 curve = SubResource( 6 )
-normal_speed = 200
 active_camera = true
 
 [node name="Rival1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 7, -102 )
 curve = SubResource( 2 )
-normal_speed = 215
 sprite = 2
 
 [node name="Rival2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 9, -206 )
 curve = SubResource( 3 )
-normal_speed = 230
 sprite = 3
 
 [node name="Rival3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 10, -319 )
 curve = SubResource( 4 )
-normal_speed = 250
 sprite = 4
 
 [node name="Goal" type="Area2D" parent="."]

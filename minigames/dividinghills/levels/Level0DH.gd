@@ -6,7 +6,7 @@ export (int) var hill_height_range = 100
 export (PackedScene) var collectible
 var hills_texture = preload("res://assets/hills/grass.png")
 var criteria_numbers = [2, 3, 4, 5, 6, 9, 10, 11]
-var max_multiplicator = 1000
+var max_multiplicator = 500
 var max_gcd = 25
 var current_question = {"type": 0, "text": "", "correct_answer":-1,
 						"options":{"A":"", "B":"", "C":"", "D":""}}
@@ -16,6 +16,7 @@ var score = 0
 var can_move = true
 
 func _ready():
+	MusicController.set_music()
 	randomize()
 	# Conectamos las senyales de contestacion
 	var _ret
@@ -49,9 +50,11 @@ func _process(_delta):
 		_ret = pickup.connect("chest_collected", self, "pop_up_question")
 	
 func generate_hills():
-	# PREGUNTAR
-	# Idea general de creacion procedural del terreno obtenida de
-	# https://www.youtube.com/watch?v=QLZa1mjW-YU
+	# Idea general de creacion procedural del terreno obtenida 
+	# y adaptada del tutorial obtenido de 
+	# https://www.youtube.com/watch?v=QLZa1mjW-YU, cuyo codigo fuente
+	# puede encontrarse en github:
+	# https://github.com/kidscancode/godot3_procgen_demos/blob/master/part05/Godot3_2Dterrain2/Terrain.gd
 	# Cuanto puede ocupar como maximo una colina y su alrededor.
 	var hills_width = screensize.x*4 / num_hills
 	var hill_slice_width = hills_width / hill_slices
