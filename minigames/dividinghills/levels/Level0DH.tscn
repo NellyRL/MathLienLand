@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://minigames/dividinghills/levels/Level0DH.gd" type="Script" id=1]
 [ext_resource path="res://minigames/dividinghills/characters/player/Player.tscn" type="PackedScene" id=2]
@@ -6,7 +6,11 @@
 [ext_resource path="res://minigames/dividinghills/collectibles/Chest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/background/Flat/sky.png" type="Texture" id=5]
 [ext_resource path="res://minigames/dividinghills/levels/Clouds.gd" type="Script" id=6]
+[ext_resource path="res://assets/background/tree34.png" type="Texture" id=7]
+[ext_resource path="res://assets/audio/483598__raclure__wrong.mp3" type="AudioStream" id=8]
 [ext_resource path="res://assets/background/Flat/clouds1.png" type="Texture" id=9]
+[ext_resource path="res://assets/background/Flat/hills1.png" type="Texture" id=10]
+[ext_resource path="res://assets/audio/242501__gabrielaraujo__powerupsuccess.wav" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 705, 1000 )
@@ -31,38 +35,40 @@ shape = SubResource( 1 )
 [node name="HUDDH" parent="CanvasLayer" instance=ExtResource( 3 )]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.4, 1 )
 motion_mirroring = Vector2( 1024, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Sky"]
+position = Vector2( 8, 120 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1024, 1024 )
 
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 320, 1648 )
+position = Vector2( 976, -704 )
 motion_scale = Vector2( 0, 0 )
 motion_mirroring = Vector2( 1990, 0 )
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Clouds"]
-position = Vector2( 8, 496 )
+position = Vector2( 16, 616 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 2002, 206 )
 
 [node name="Clouds2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 976, -704 )
+position = Vector2( 1016, -528 )
 motion_scale = Vector2( 0, 0 )
 motion_mirroring = Vector2( 1990, 0 )
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Clouds2"]
-position = Vector2( 8, 496 )
+position = Vector2( 16, 616 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
 region_enabled = true
@@ -75,8 +81,60 @@ motion_mirroring = Vector2( 1990, 0 )
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Clouds3"]
-position = Vector2( 8, 496 )
+position = Vector2( 16, 616 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 2002, 206 )
+
+[node name="Decorations" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 1016, -392 )
+motion_offset = Vector2( 0.5, 0 )
+motion_mirroring = Vector2( 998, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Decorations"]
+modulate = Color( 0.623529, 0.560784, 0.560784, 1 )
+position = Vector2( 521, 325.274 )
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2002, 128 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/Decorations"]
+modulate = Color( 0.623529, 0.560784, 0.560784, 1 )
+position = Vector2( 521, 381.274 )
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2002, 128 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/Decorations"]
+modulate = Color( 0.623529, 0.560784, 0.560784, 1 )
+position = Vector2( 521, 429.274 )
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2002, 128 )
+
+[node name="Decorations2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 1016, -392 )
+motion_offset = Vector2( 0.5, 0 )
+motion_mirroring = Vector2( 2002, 0 )
+
+[node name="Sprite5" type="Sprite" parent="ParallaxBackground/Decorations2"]
+modulate = Color( 0.623529, 0.560784, 0.560784, 1 )
+position = Vector2( 1000, 184 )
+rotation = -0.224654
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 129, 230 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="RightAnswerSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = 5.0
+
+[node name="WrongAnswerSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

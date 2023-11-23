@@ -22,6 +22,10 @@ var total_race_time = 0
 # la carrera.
 var final_position = -1
 
+# Variables del juego Dividing Hills
+var total_hills_time = 0
+var ncorrect_hills = 0
+var total_hills_questions = 0
 
 # Rellenamos las preguntas con la bateria elegida
 func _ready():

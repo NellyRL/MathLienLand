@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://general/autoload/MusicController.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/song18.mp3" type="AudioStream" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/audio/midnight_drive.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/audio/Victory1.mp3" type="AudioStream" id=6]
 [ext_resource path="res://assets/audio/683835__seth_makes_sounds__video-game-music.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/697844__geoff-bremner-audio__free-8-bit-video-game-style-music.wav" type="AudioStream" id=8]
 
 [node name="MusicController" type="Node"]
 script = ExtResource( 1 )
@@ -29,3 +30,7 @@ stream = ExtResource( 6 )
 
 [node name="HillsMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -2.0
+
+[node name="HillsVictMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )

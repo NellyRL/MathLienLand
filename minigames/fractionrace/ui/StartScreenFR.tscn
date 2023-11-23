@@ -38,7 +38,14 @@ margin_bottom = 545.0
 [node name="VBoxContainer" parent="CanvasLayer/MarginContainer/Panel/MarginContainer" index="0"]
 margin_bottom = 407.0
 
+[node name="Title" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="0"]
+margin_right = 724.0
+
+[node name="Separator" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="1"]
+margin_right = 724.0
+
 [node name="Instructions" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="2"]
+margin_right = 724.0
 text = "1. A question will appear in the top of your screen!!
 
 2. There will be 4 possible answers!!
@@ -46,3 +53,10 @@ text = "1. A question will appear in the top of your screen!!
 3. Pick the correct one to get a boost!
 
 4. Surpass your rivals and have fun!"
+
+[node name="Separator2" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="3"]
+margin_right = 724.0
+
+[node name="Close" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="4"]
+margin_left = 319.0
+margin_right = 403.324

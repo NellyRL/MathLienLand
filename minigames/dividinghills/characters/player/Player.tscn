@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/characters/drivers_by_parts/cars/shipBeige.png" type="Texture" id=1]
 [ext_resource path="res://minigames/dividinghills/characters/player/Wheel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://minigames/dividinghills/characters/player/Player.gd" type="Script" id=3]
 [ext_resource path="res://assets/characters/drivers_by_parts/characters/alienBeigeDriver.png" type="Texture" id=4]
+[ext_resource path="res://assets/audio/370887__mrlindstrom__enginesound2_hills_engine.wav" type="AudioStream" id=5]
 
 [node name="Player" type="RigidBody2D" groups=["dhplayer"]]
 gravity_scale = 25.0
@@ -32,6 +33,7 @@ texture = ExtResource( 1 )
 polygon = PoolVector2Array( -64, -24, -48, -24, -16, -32, 16, -32, 48, -24, 64, -24, 64, 0, 56, 8, 40, 16, 24, 32, -16, 32, -32, 24, -48, 8, -64, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -8, -96 )
 current = true
 limit_left = 0
 
@@ -40,6 +42,11 @@ position = Vector2( 0, -48 )
 texture = ExtResource( 4 )
 
 [node name="GameOverTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
+
+[node name="Engine" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 3.0
+autoplay = true
 
 [connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]
