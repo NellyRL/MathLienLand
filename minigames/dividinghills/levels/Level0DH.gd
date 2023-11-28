@@ -7,6 +7,8 @@ export (int) var num_hills = 6
 export (int) var hill_slices = 10
 # Altura maxima de una colina.
 export (int) var hill_height_range = 150
+# Maximo preguntas que se haran en el juego
+export (int) var max_questions = 15
 # Escena que representa al objeto coleccionable
 export (PackedScene) var collectible
 #Textura de las colinas
@@ -32,6 +34,9 @@ var score = 0
 var can_move = true
 # Tiempo empleado en el juego por el jugador
 var time = 0
+# Variable para indicar si hay que reestablecer
+# el temporizador de game over
+var restart_timer = false
 
 func _ready():
 	# En primer lugar, cuando la escena entre al 
@@ -150,6 +155,7 @@ func set_question():
 	# los mas importantes. En un futuro estaria
 	# bien anyadir preguntas del mcm, numeros primos
 	# etc.
+		
 	# Obtenemos los botones de respuesta.
 	var node_a = $CanvasLayer/HUDDH/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/A
 	var node_b = $CanvasLayer/HUDDH/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/B
@@ -304,10 +310,10 @@ func check_answer(answer):
 	# Comprobamos si en este punto el temporizador
 	# de game over esta activo para pararlo y volverlo
 	# a activar tras la constentacion de la pregunta.
-	var restart_timer = false
-	if !$Player/GameOverTimer.is_stopped():
-		restart_timer = true
-		$Player/GameOverTimer.stop()
+	# var restart_timer = false
+	# if !$Player/GameOverTimer.is_stopped():
+	#	restart_timer = true
+	#	$Player/GameOverTimer.stop()
 
 	var feed_text
 	# Si la respuesta es correcta, aumentamos el numero de
@@ -351,7 +357,12 @@ func check_answer(answer):
 	$CanvasLayer/HUDDH/MarginContainer/Panel.visible = false
 	can_move = true
 	if restart_timer:
+		#print("He continuado")
 		$Player/GameOverTimer.start()
+	# Comprobamos el limite de preguntas a realizar, si
+	# nos pasamos, salimos del juego
+	if Global.total_hills_questions >= max_questions:
+		game_over()
 
 func disable_player_answer():
 	# Deshabilitamos todos los botones de respuesta.
@@ -382,6 +393,14 @@ func pop_up_question():
 	# impidiendo el movimiento del jugador y mostrando
 	# el panel correspondiente.
 	can_move = false
+	# Comprobamos si en este punto el temporizador
+	# de game over esta activo para pararlo y volverlo
+	# a activar tras la constentacion de la pregunta.
+	restart_timer = false
+	if !$Player/GameOverTimer.is_stopped():
+		#print("He parado!")
+		restart_timer = true
+		$Player/GameOverTimer.stop()
 	$CanvasLayer/HUDDH/MarginContainer/Panel.visible = true
 
 func game_over():
