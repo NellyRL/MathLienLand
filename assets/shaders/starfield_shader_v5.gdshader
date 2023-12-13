@@ -21,8 +21,8 @@ uniform vec4 near_stars_color : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform sampler2D small_stars_texture;
 uniform sampler2D large_stars_texture;
 
-uniform float base_scroll_speed : hint_range(0.0, 1.0, 0.01) = 0.05;
-uniform float additional_scroll_speed : hint_range(0.01, 1.0, 0.01) = 0.05;
+uniform float base_scroll_speed : hint_range(0.0, 1.0, 0.01) = 0.02;
+uniform float additional_scroll_speed : hint_range(0.01, 1.0, 0.01) = 0.02;
 
 float greater_than(float x, float y) {
 	return max(sign(x - y), 0.0);

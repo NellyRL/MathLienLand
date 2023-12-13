@@ -9,9 +9,10 @@ var race_music_is_playing = false
 var race_vict_music_is_playing = false
 var hills_music_is_playing = false
 var hills_vict_music_is_playing = false
+var meteor_music_is_playing = false
 
 # Variable de documentacion. Indica las escenas posibles del juego.
-var scenes_names = ["MainMenu", "MinigameSelectScene", "StartScreenLR3", "EndScreenLR3", "Level0LR3"]
+# var scenes_names = ["MainMenu", "MinigameSelectScene", "StartScreenLR3", "EndScreenLR3", "Level0LR3"]
 
 # Funcion que se asegura que este sonando el tema del menu
 func play_menu_music():
@@ -100,6 +101,19 @@ func stop_hills_vict_music():
 	if hills_vict_music_is_playing:
 		$HillsVictMusic.stop()
 		hills_vict_music_is_playing = false
+		
+# Funcion que se asegura que este sonando el tema de
+# meteors
+func play_meteor_music():
+	if not meteor_music_is_playing:
+		$MeteorsMusic.play()
+		meteor_music_is_playing = true
+
+# Funcion que se asegura que NO este sonando el tema de carreras
+func stop_meteor_music():
+	if meteor_music_is_playing:
+		$MeteorsMusic.stop()
+		meteor_music_is_playing = false
 
 # Funcion a ser llamada cuando cada escena entre al arbol del proyecto
 # Se encarga de hacer sonal el tema correspondiente en cada momento.
@@ -114,6 +128,7 @@ func set_music():
 			stop_race_vict_music()
 			stop_hills_music()
 			stop_hills_vict_music()
+			stop_meteor_music()
 			play_menu_music()
 		"StartScreenLR3", "Level0LR3":
 			stop_menu_music()
@@ -122,6 +137,7 @@ func set_music():
 			stop_race_vict_music()
 			stop_hills_music()
 			stop_hills_vict_music()
+			stop_meteor_music()
 			play_lab_music()
 		"EndScreenLR3":
 			stop_lab_music()
@@ -130,6 +146,7 @@ func set_music():
 			stop_race_vict_music()
 			stop_hills_music()
 			stop_hills_vict_music()
+			stop_meteor_music()
 			play_vict_music()
 		"StartScreenFR", "Level0FR":
 			stop_lab_music()
@@ -138,6 +155,7 @@ func set_music():
 			stop_race_vict_music()
 			stop_hills_music()
 			stop_hills_vict_music()
+			stop_meteor_music()
 			play_race_music()
 		"EndScreenFR":
 			stop_lab_music()
@@ -146,6 +164,7 @@ func set_music():
 			stop_race_music()
 			stop_hills_music()
 			stop_hills_vict_music()
+			stop_meteor_music()
 			play_race_vict_music()
 		"StartScreenDH", "Level0DH":
 			stop_lab_music()
@@ -154,6 +173,7 @@ func set_music():
 			stop_race_music()
 			stop_race_vict_music()
 			stop_hills_vict_music()
+			stop_meteor_music()
 			play_hills_music()
 		"EndScreenDH":
 			stop_lab_music()
@@ -162,7 +182,17 @@ func set_music():
 			stop_race_music()
 			stop_race_vict_music()
 			stop_hills_music()
+			stop_meteor_music()
 			play_hills_vict_music()
+		"StartScreenDSM", "Level0DSM":
+			stop_lab_music()
+			stop_menu_music()
+			stop_vict_music()
+			stop_race_music()
+			stop_race_vict_music()
+			stop_hills_music()
+			stop_hills_vict_music()
+			play_meteor_music()
 		_:
 			stop_music()
 
@@ -174,4 +204,5 @@ func stop_music():
 	stop_race_vict_music()
 	stop_hills_music()
 	stop_hills_vict_music()
+	stop_meteor_music()
 	

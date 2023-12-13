@@ -19,6 +19,7 @@ margin_bottom = 339.0
 [node name="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" index="2"]
 margin_top = 343.0
 margin_bottom = 367.0
+text = "Choose the correct meteor to get rewards!!"
 
 [node name="Separator2" parent="CanvasLayer/MarginContainer/VBoxContainer" index="3"]
 margin_top = 371.0
@@ -32,4 +33,34 @@ margin_bottom = 445.0
 margin_bottom = 545.0
 
 [node name="VBoxContainer" parent="CanvasLayer/MarginContainer/Panel/MarginContainer" index="0"]
-margin_bottom = 395.0
+margin_right = 809.0
+margin_bottom = 436.0
+
+[node name="Title" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="0"]
+margin_right = 759.0
+
+[node name="Separator" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="1"]
+margin_right = 759.0
+
+[node name="Instructions" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="2"]
+margin_right = 759.0
+margin_bottom = 308.0
+text = "1. In this vast universe, there are two types of meteors. If you 
+crash with them, one type crushes your spaceship, while
+ the other rewards you handsomely.
+2. Answer correctly to the question that will be displayed
+above to recognise the meteors with rewards and
+land on them using the arrow keys!
+3. Have fun!
+"
+
+[node name="Separator2" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="3"]
+margin_top = 312.0
+margin_right = 759.0
+margin_bottom = 332.0
+
+[node name="Close" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="4"]
+margin_left = 337.0
+margin_top = 336.0
+margin_right = 421.324
+margin_bottom = 386.251

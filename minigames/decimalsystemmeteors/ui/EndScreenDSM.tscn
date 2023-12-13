@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://general/HooverBtn.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/kenneyUI-red.tres" type="Theme" id=2]
 [ext_resource path="res://assets/ui/titles/meteors_gameover.png" type="Texture" id=3]
 [ext_resource path="res://assets/shaders/starfield_shader_v5.gdshader" type="Shader" id=4]
 [ext_resource path="res://assets/fonts/VCRosdNEUE.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://minigames/decimalsystemmeteors/ui/EndScreenDSM.gd" type="Script" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
@@ -34,6 +35,7 @@ font_data = ExtResource( 5 )
 [node name="EndScreenDSM" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -129,5 +131,6 @@ margin_right = 864.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 
+[connection signal="button_up" from="CanvasLayer/MarginContainer/VBoxContainer/GridContainer/Continue" to="." method="_on_Continue_button_up"]
 [connection signal="mouse_entered" from="CanvasLayer/MarginContainer/VBoxContainer/GridContainer/Continue" to="CanvasLayer/MarginContainer/VBoxContainer/GridContainer/Continue" method="_on_Btn_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/MarginContainer/VBoxContainer/GridContainer/Continue" to="CanvasLayer/MarginContainer/VBoxContainer/GridContainer/Continue" method="_on_Btn_mouse_exited"]

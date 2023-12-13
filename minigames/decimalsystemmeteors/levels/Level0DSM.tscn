@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/shaders/starfield_shader_v5.gdshader" type="Shader" id=1]
+[ext_resource path="res://minigames/decimalsystemmeteors/levels/Level0DSM.gd" type="Script" id=2]
+[ext_resource path="res://minigames/decimalsystemmeteors/characters/meteors/Meteor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://minigames/decimalsystemmeteors/ui/HUDDSM.tscn" type="PackedScene" id=4]
+[ext_resource path="res://minigames/decimalsystemmeteors/characters/player/Player.tscn" type="PackedScene" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/dimensions = Vector2( 1024, 600 )
+shader_param/small_stars = 50.0
+shader_param/small_stars_far_size = 0.5
+shader_param/small_stars_near_size = 1.0
+shader_param/large_stars = 8.0
+shader_param/large_stars_far_size = 0.5
+shader_param/large_stars_near_size = 1.0
+shader_param/far_stars_color = Color( 0.5, 0, 1, 1 )
+shader_param/near_stars_color = Color( 1, 1, 1, 1 )
+shader_param/base_scroll_speed = 0.02
+shader_param/additional_scroll_speed = 0.02
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1024, 0, 0, 0, 0, 0, 1024, 600, 0, 0, 0, 0, 0, 600, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="Level0DSM" type="Node2D"]
+script = ExtResource( 2 )
+meteor_scene = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Player" parent="CanvasLayer" instance=ExtResource( 5 )]
+position = Vector2( 512, 312 )
+
+[node name="MeteorPath" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="MeteorPath"]
+
+[node name="MeteorTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="HUDDSM" parent="CanvasLayer2" instance=ExtResource( 4 )]
+
+[connection signal="timeout" from="MeteorTimer" to="." method="_on_MeteorTimer_timeout"]
