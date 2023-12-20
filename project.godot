@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "RichTextEffect",
+"class": "RichTextSup",
+"language": "GDScript",
+"path": "res://minigames/common/textEffects/sup.gd"
+} ]
+_global_script_class_icons={
+"RichTextSup": ""
+}
+
 [application]
 
 config/name="TFG_v1"

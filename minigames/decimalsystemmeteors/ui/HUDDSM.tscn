@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/themes/kenneyUI-red.tres" type="Theme" id=1]
 [ext_resource path="res://assets/themes/kenneyUI-blue.tres" type="Theme" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/hills/pickups/coinGold.png" type="Texture" id=5]
 [ext_resource path="res://assets/hills/time.png" type="Texture" id=6]
 [ext_resource path="res://assets/meteors/platformPack_item017.png" type="Texture" id=7]
+[ext_resource path="res://minigames/common/textEffects/sup.gd" type="Script" id=8]
 
 [sub_resource type="StyleBoxFlat" id=20]
 bg_color = Color( 0.168627, 0.25098, 0.341176, 0 )
@@ -18,11 +19,20 @@ Panel/styles/panel = SubResource( 20 )
 size = 25
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=23]
-size = 22
+[sub_resource type="DynamicFont" id=28]
+size = 20
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=29]
+size = 23
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="RichTextEffect" id=30]
+script = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=25]
 size = 60
@@ -39,6 +49,60 @@ size = 42
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=31]
+bg_color = Color( 0.690196, 0.00392157, 0.00392157, 1 )
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="Theme" id=32]
+Panel/styles/panel = SubResource( 31 )
+
+[sub_resource type="DynamicFont" id=33]
+size = 26
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=34]
+resource_name = "Appear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("LastMsg:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LastMsg/CenterContainer:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LastMsg/CenterContainer/Label:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="HUDDSM" type="Control"]
 anchor_right = 1.0
@@ -89,17 +153,22 @@ custom_constants/margin_top = 20
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
 
-[node name="Question" type="Label" parent="Panel/HBoxContainer/QuestionMargin"]
+[node name="Question" type="RichTextLabel" parent="Panel/HBoxContainer/QuestionMargin"]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 595.0
 margin_bottom = 108.0
 size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 23 )
-text = "Lore Ipsum"
-align = 1
-valign = 1
+custom_fonts/bold_font = SubResource( 28 )
+custom_fonts/normal_font = SubResource( 29 )
+bbcode_enabled = true
+bbcode_text = "
+[center]What is equivalent to:
+[color=blue]XXX cm[sup][b]3[/b][/sup][/color]?[/center]"
+text = "
+What is equivalent to:
+XXX cm3?"
+custom_effects = [ SubResource( 30 ) ]
 
 [node name="PauseBtnMargin" type="MarginContainer" parent="Panel/HBoxContainer"]
 margin_left = 859.0
@@ -168,9 +237,9 @@ texture = ExtResource( 5 )
 expand = true
 
 [node name="Label" type="Label" parent="Score"]
-margin_left = 64.0
+margin_left = 74.6667
 margin_top = 16.0
-margin_right = 104.0
+margin_right = 114.667
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 27 )
 text = "0"
@@ -185,8 +254,8 @@ texture = ExtResource( 6 )
 expand = true
 
 [node name="Label" type="Label" parent="Time"]
-margin_left = -32.0
-margin_right = -5.0
+margin_left = -42.6666
+margin_right = -15.6666
 margin_bottom = 48.0
 custom_fonts/font = SubResource( 27 )
 text = "0"
@@ -214,6 +283,38 @@ margin_right = 592.0
 margin_bottom = 568.0
 rect_scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 7 )
+
+[node name="LastMsg" type="Panel" parent="."]
+self_modulate = Color( 1, 0, 0, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -50.0
+margin_right = 100.0
+margin_bottom = 50.0
+theme = SubResource( 32 )
+
+[node name="CenterContainer" type="CenterContainer" parent="LastMsg"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="LastMsg/CenterContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 44.0
+margin_top = 21.0
+margin_right = 155.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 33 )
+text = "OH NO! 
+You died!"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Appear = SubResource( 34 )
 
 [connection signal="button_up" from="Panel/HBoxContainer/BackBtnMargin/BackBtn" to="." method="_on_BackBtn_button_up"]
 [connection signal="button_up" from="Panel/HBoxContainer/PauseBtnMargin/PauseBtn" to="." method="_on_PauseBtn_button_up"]

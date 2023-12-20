@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/522241_dzedenz_result-2-cut.wav-dd699381cba23b75cc7af4e2592da252.sample"
+
+[deps]
+
+source_file="res://assets/audio/522241_dzedenz_result-2-cut.wav"
+dest_files=[ "res://.import/522241_dzedenz_result-2-cut.wav-dd699381cba23b75cc7af4e2592da252.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

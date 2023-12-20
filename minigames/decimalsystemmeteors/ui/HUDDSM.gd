@@ -4,8 +4,8 @@ func _on_BackBtn_button_up():
 	# Si el usuario desea volver a la pantalla de inicio del
 	# juego, reseteamos las variables que controlan la aparicion
 	# de preguntas y cambiamos de escena.
-	# Global.current_labyrinth_question = 0
-	# Global.total_labyrinth_time = 0
+	Global.meteor_score = 0
+	Global.total_meteors_time = 0
 	var _ret = get_tree().change_scene("res://minigames/decimalsystemmeteors/ui/StartScreenDSM.tscn")
 
 func _on_PauseBtn_button_up():
@@ -23,3 +23,21 @@ func _on_ResumeBtn_button_up():
 	if $PausedScreen.visible:
 		get_tree().paused = false
 		$PausedScreen.visible = false
+
+func set_question(text):
+	# Establecemos una nueva pregunta con el texto pasado
+	# como argumento.
+	var question = $Panel/HBoxContainer/QuestionMargin/Question
+	# La pregunta siempre sera la misma, cambiara el numero preguntado
+	question.bbcode_text = "[center]What is equivalent to:\n[color=blue]"
+	question.bbcode_text += text
+	question.bbcode_text += "[/color]?[/center]"
+
+func update_score(score):
+	# Actualizamos la puntuacion del jugador
+	$Score/Label.text = str(score)
+
+func update_time(time):
+	# Actualizamos el tiempo empleado en
+	# el minijuego
+	$Time/Label.text = str(time)

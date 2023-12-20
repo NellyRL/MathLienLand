@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/meteors/meteorBrown_big3.png" type="Texture" id=1]
 [ext_resource path="res://assets/meteors/meteorBrown_big2.png" type="Texture" id=2]
@@ -10,6 +10,10 @@
 [ext_resource path="res://assets/meteors/meteorGrey_big4.png" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/VCRosdNEUE.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://minigames/decimalsystemmeteors/characters/meteors/Meteor.gd" type="Script" id=10]
+[ext_resource path="res://minigames/common/textEffects/sup.gd" type="Script" id=11]
+[ext_resource path="res://assets/audio/483598__raclure__wrong.mp3" type="AudioStream" id=12]
+[ext_resource path="res://assets/maze/Other/coinGold.png" type="Texture" id=13]
+[ext_resource path="res://assets/audio/402288__matrixxx__retro-coin-02_hills_collectible1.wav" type="AudioStream" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -74,11 +78,75 @@ tracks/0/keys = {
 "values": [ 0.0, 90.0, 180.0, 270.0, 360.0 ]
 }
 
+[sub_resource type="Animation" id=7]
+resource_name = "Correct"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CorrectReward:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Wrong"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.992157, 0.27451, 0.27451, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="DynamicFont" id=4]
-size = 23
-outline_size = 1
+size = 14
+outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=5]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="RichTextEffect" id=6]
+script = ExtResource( 11 )
 
 [node name="Meteor" type="RigidBody2D" groups=["meteors"]]
 collision_layer = 8
@@ -87,6 +155,7 @@ gravity_scale = 0.0
 script = ExtResource( 10 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = 0.125664
 frames = SubResource( 1 )
 animation = "2"
 
@@ -97,14 +166,37 @@ shape = SubResource( 2 )
 position = Vector2( 1.90735e-06, 1.90735e-06 )
 scale = Vector2( 6.4, 4.8 )
 
+[node name="CorrectReward" type="Sprite" parent="."]
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 13 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
 anims/default = SubResource( 3 )
 
-[node name="Label" type="Label" parent="."]
-margin_left = -32.0
-margin_top = -16.0
-margin_right = 27.0
-margin_bottom = 10.0
-custom_fonts/font = SubResource( 4 )
-text = "dam3"
-align = 1
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+pause_mode = 2
+anims/Correct = SubResource( 7 )
+anims/Wrong = SubResource( 8 )
+
+[node name="Label" type="RichTextLabel" parent="."]
+margin_left = -56.0
+margin_top = -24.0
+margin_right = 56.0
+margin_bottom = 40.0
+custom_fonts/bold_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "
+[center]200 dam[b][sup]3[/sup][/b][/center]"
+text = "
+200 dam3"
+custom_effects = [ SubResource( 6 ) ]
+
+[node name="WrongSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 12 )
+
+[node name="CorrectSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 14 )

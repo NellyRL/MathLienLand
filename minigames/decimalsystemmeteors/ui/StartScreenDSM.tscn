@@ -29,6 +29,9 @@ margin_bottom = 391.0
 margin_top = 395.0
 margin_bottom = 445.0
 
+[node name="StartBtn" parent="CanvasLayer/MarginContainer/VBoxContainer/GridContainer" index="1"]
+next_scene_path = "res://minigames/decimalsystemmeteors/levels/Level0DSM.tscn"
+
 [node name="Panel" parent="CanvasLayer/MarginContainer" index="1"]
 margin_bottom = 545.0
 
