@@ -31,6 +31,12 @@ var total_hills_questions = 0
 var total_meteors_time = 0
 var meteor_score = 0
 
+# -------------------- Variables necesarias en FunctionMemory. -----------
+var flipped_pairs_number = 0
+var total_memory_time = 0
+var memory_score = 0
+# -------------------- FIN -----------------------------------------------
+
 # Rellenamos las preguntas con la bateria elegida
 func _ready():
 	fill_labyrinth_questions()

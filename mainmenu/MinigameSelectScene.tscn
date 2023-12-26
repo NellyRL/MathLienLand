@@ -163,6 +163,7 @@ margin_bottom = 345.0
 focus_mode = 2
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+next_scene_path = "res://minigames/functionmemory/ui/StartScreenFM.tscn"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MinigameBtns/BtnGrid/FunctionMemory"]
 anchor_right = 1.0

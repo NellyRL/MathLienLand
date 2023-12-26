@@ -11,6 +11,7 @@ var hills_music_is_playing = false
 var hills_vict_music_is_playing = false
 var meteor_music_is_playing = false
 var meteor_vict_music_is_playing = false
+var memory_music_is_playing = false
 
 # Variable de documentacion. Indica las escenas posibles del juego.
 # var scenes_names = ["MainMenu", "MinigameSelectScene", "StartScreenLR3", "EndScreenLR3", "Level0LR3"]
@@ -123,11 +124,24 @@ func play_meteor_vict_music():
 		$MeteorsVictMusic.play()
 		meteor_vict_music_is_playing = true
 
-# Funcion que se asegura que NO este sonando el tema de carreras
+# Funcion que se asegura que NO este sonando el tema de meteoritos
 func stop_meteor_vict_music():
 	if meteor_vict_music_is_playing:
 		$MeteorsVictMusic.stop()
 		meteor_vict_music_is_playing = false
+
+# Funcion que se asegura que este sonando el tema de
+# function memory
+func play_memory_music():
+	if not memory_music_is_playing:
+		$MemoryMusic.play()
+		memory_music_is_playing = true
+
+# Funcion que se asegura que NO este sonando el tema de function memory
+func stop_memory_music():
+	if memory_music_is_playing:
+		$MemoryMusic.stop()
+		memory_music_is_playing = false
 
 # Funcion a ser llamada cuando cada escena entre al arbol del proyecto
 # Se encarga de hacer sonal el tema correspondiente en cada momento.
@@ -144,6 +158,7 @@ func set_music():
 			stop_hills_vict_music()
 			stop_meteor_music()
 			stop_meteor_vict_music()
+			stop_memory_music()
 			play_menu_music()
 		"StartScreenLR3", "Level0LR3":
 			stop_menu_music()
@@ -154,6 +169,7 @@ func set_music():
 			stop_hills_vict_music()
 			stop_meteor_music()
 			stop_meteor_vict_music()
+			stop_memory_music()
 			play_lab_music()
 		"EndScreenLR3":
 			stop_lab_music()
@@ -164,6 +180,7 @@ func set_music():
 			stop_hills_vict_music()
 			stop_meteor_music()
 			stop_meteor_vict_music()
+			stop_memory_music()
 			play_vict_music()
 		"StartScreenFR", "Level0FR":
 			stop_lab_music()
@@ -174,6 +191,7 @@ func set_music():
 			stop_hills_vict_music()
 			stop_meteor_music()
 			stop_meteor_vict_music()
+			stop_memory_music()
 			play_race_music()
 		"EndScreenFR":
 			stop_lab_music()
@@ -184,6 +202,7 @@ func set_music():
 			stop_hills_vict_music()
 			stop_meteor_music()
 			stop_meteor_vict_music()
+			stop_memory_music()
 			play_race_vict_music()
 		"StartScreenDH", "Level0DH":
 			stop_lab_music()
@@ -194,6 +213,7 @@ func set_music():
 			stop_hills_vict_music()
 			stop_meteor_music()
 			stop_meteor_vict_music()
+			stop_memory_music()
 			play_hills_music()
 		"EndScreenDH":
 			stop_lab_music()
@@ -204,6 +224,7 @@ func set_music():
 			stop_hills_music()
 			stop_meteor_music()
 			stop_meteor_vict_music()
+			stop_memory_music()
 			play_hills_vict_music()
 		"StartScreenDSM", "Level0DSM":
 			stop_lab_music()
@@ -214,6 +235,7 @@ func set_music():
 			stop_hills_music()
 			stop_hills_vict_music()
 			stop_meteor_vict_music()
+			stop_memory_music()
 			play_meteor_music()
 		"EndScreenDSM":
 			stop_lab_music()
@@ -225,7 +247,42 @@ func set_music():
 			stop_meteor_music()
 			stop_hills_vict_music()
 			stop_meteor_music()
+			stop_memory_music()
 			play_meteor_vict_music()
+		"Level0FM":
+			stop_lab_music()
+			stop_menu_music()
+			stop_vict_music()
+			stop_race_music()
+			stop_race_vict_music()
+			stop_hills_music()
+			stop_meteor_music()
+			stop_hills_vict_music()
+			stop_meteor_music()
+			stop_meteor_vict_music()
+			play_memory_music()
+		"StartScreenFM":
+			stop_lab_music()
+			stop_vict_music()
+			stop_race_music()
+			stop_race_vict_music()
+			stop_hills_music()
+			stop_hills_vict_music()
+			stop_meteor_music()
+			stop_meteor_vict_music()
+			stop_memory_music()
+			play_menu_music()
+		"EndScreenFM":
+			stop_lab_music()
+			stop_menu_music()
+			stop_race_music()
+			stop_race_vict_music()
+			stop_hills_music()
+			stop_hills_vict_music()
+			stop_meteor_music()
+			stop_meteor_vict_music()
+			stop_memory_music()
+			play_vict_music()
 		_:
 			stop_music()
 
@@ -239,4 +296,9 @@ func stop_music():
 	stop_hills_vict_music()
 	stop_meteor_music()
 	stop_meteor_vict_music()
+	stop_memory_music()
 	
+
+# ------------------------ Anyadido desde Codigo Heredado ----------------------
+
+

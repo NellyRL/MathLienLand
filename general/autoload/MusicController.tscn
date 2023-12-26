@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://general/autoload/MusicController.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/song18.mp3" type="AudioStream" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/audio/697844__geoff-bremner-audio__free-8-bit-video-game-style-music.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/audio/666720__seth_makes_sounds__cute-happy-background-music.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/audio/545249__sieuamthanh__nhiem-vu-hoan-thanh.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/Swinging Pants_FM.ogg" type="AudioStream" id=11]
 
 [node name="MusicController" type="Node"]
 script = ExtResource( 1 )
@@ -42,3 +43,6 @@ stream = ExtResource( 9 )
 
 [node name="MeteorsVictMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+
+[node name="MemoryMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
