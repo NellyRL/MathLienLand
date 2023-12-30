@@ -41,6 +41,7 @@ margin_right = 235.0
 [node name="StartBtn" parent="CanvasLayer/MarginContainer/VBoxContainer/GridContainer" index="1"]
 margin_left = 305.0
 margin_right = 540.0
+next_scene_path = "res://minigames/endlessrunner/levels/Level0MER.tscn"
 
 [node name="Info" parent="CanvasLayer/MarginContainer/VBoxContainer/GridContainer" index="2"]
 margin_left = 610.0

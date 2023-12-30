@@ -182,13 +182,14 @@ margin_bottom = 345.0
 focus_mode = 2
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+next_scene_path = "res://minigames/endlessrunner/ui/StartScreenMER.tscn"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MinigameBtns/BtnGrid/EndlessRunner"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 4 )
-text = "Endless 
-Math
+text = "Math
+Endless 
 Runner"
 align = 1
 valign = 1

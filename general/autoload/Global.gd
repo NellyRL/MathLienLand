@@ -37,6 +37,12 @@ var total_memory_time = 0
 var memory_score = 0
 # -------------------- FIN -----------------------------------------------
 
+# -------------------- Variables necesarias en MathEndlessRunner. --------
+var ncorrect_runner = 0 # Add
+var total_runner_time = 0 # Add
+var runner_score = 0
+# -------------------- FIN -----------------------------------------------
+
 # Rellenamos las preguntas con la bateria elegida
 func _ready():
 	fill_labyrinth_questions()
