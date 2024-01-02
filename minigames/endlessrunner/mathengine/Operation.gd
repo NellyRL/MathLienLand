@@ -1,3 +1,5 @@
+# ----------------- Codigo Base obtenido de: -----------------
+# 		https://github.com/CVelasco2/Math-Endless-Runner
 extends Control
 
 #Enumeracion de los tipos de operaciones
@@ -130,11 +132,13 @@ func _on_check_button_pressed():
 		message.text = "I'm sorry, the answer\nis"
 		answer_line.text = str(correct)
 		answer_line.editable = false
+		# Ayudamos visualmente al jugador mostrando un fondo rojo
+		# para resaltar el fallo.
 		var new_stylebox_readonly = answer_line.get_stylebox("read_only").duplicate()
-		#new_stylebox_readonly.border_width_top = 3
 		new_stylebox_readonly.bg_color =  Color(0.992188, 0.264428, 0.011627)
 		answer_line.add_stylebox_override("read_only", new_stylebox_readonly)
-		check.disabled = true
+		
+		#check.disabled = true
 		check.visible = false
 		return
 	
@@ -143,21 +147,25 @@ func _on_check_button_pressed():
 	#Signals.emit_signal("questioncorrect")
 	$Correct.play()
 	answer_line.editable = false
+	# Ayudamos visualmente al jugador mostrando un fondo verde
+	# para resaltar el acierto.
 	var new_stylebox_readonly = answer_line.get_stylebox("read_only").duplicate()
-	#new_stylebox_readonly.border_width_top = 3
 	new_stylebox_readonly.bg_color =  Color(0.12549, 0.87451, 0)
 	answer_line.add_stylebox_override("read_only", new_stylebox_readonly)
-	# Remove the stylebox override.
-	#answer_line.add_stylebox_override("read_only", null)
 
 	#check.disabled = true
 	check.visible = false
 	#go.disabled = false
 	go.visible = true
 
+# Se resetea el pop up de la operacion para que
+# pueda contestarse correctamente la pregunta.
 func reset_question():
+	# Hacemos la caja de respuesta transparente
 	var new_stylebox_readonly = answer_line.get_stylebox("read_only").duplicate()
 	new_stylebox_readonly.bg_color =  Color(0.6, 0.6, 0.6, 0)
 	answer_line.add_stylebox_override("read_only", new_stylebox_readonly)
+	# Mostramos el texto inicial
 	message.text = "ANSWER CORRECTLY \nTO CONTINUE!"
+	# Permitimos las respuestas de nuevo
 	answer_line.editable = true

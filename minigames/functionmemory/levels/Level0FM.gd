@@ -1,3 +1,5 @@
+# ----------------- Codigo Base obtenido de: -----------------
+# 			https://github.com/CVelasco2/Function-Memory
 extends Control
 
 #Se definen las variables necesarias
@@ -27,9 +29,11 @@ func _ready():
 	setUpHUD()
 
 func _enter_tree():
+	# Establecemos la musica del minijuego.
 	MusicController.set_music()
 
 func _exit_tree():
+	# Si salimos del minijuego, lo reseteamos
 	resetGame()
 
 func setUpTimers():
@@ -57,6 +61,8 @@ func resetGame():
 	seconds = 0 
 	moves = 0
 	#Se reinician los temporizadores
+	# No es necesario pues con conectar
+	# las senyales la primera vez basta.
 	#setUpTimers()
 	#Se reinicia la barra de estado
 	setUpHUD()
@@ -93,9 +99,6 @@ func fillDeck():
 			deck.append(Card.new(s, v))
 			v += 1
 		s += 1
-	
-	#for ele in deck:
-	#	print(ele.is_connected("pressed", ele, "_pressed"))
 
 func dealDeck():
 	#Se barajan las cartas
@@ -109,10 +112,8 @@ func dealDeck():
 		c += 1
 
 func chooseCard(c):
-	#print("Hekko")
 	#Se elige la primera carta y se gira
 	if card1 == null:
-		#print("Im here")
 		card1 = c
 		card1.flip()
 		card1.set_disabled(true)
@@ -145,7 +146,6 @@ func turnOverCards():
 	card2 = null
 
 func matchCardsAndScore():
-	#print("Estoy aca")
 	$PairFound.play()
 	#Se aumenta en 1 el valor de la puntuación
 	score += 1

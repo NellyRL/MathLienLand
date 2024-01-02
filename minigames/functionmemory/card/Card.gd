@@ -1,3 +1,5 @@
+# ----------------- Codigo Base obtenido de: -----------------
+# 			https://github.com/CVelasco2/Function-Memory
 extends TextureButton
 
 class_name Card
@@ -28,12 +30,10 @@ func _init(s, v):
 func _pressed():
 	#Se llama a la función correspondiente en caso de presionar sobre una carta
 	#CardsManager.chooseCard(self)
-	#print("Hey!")
 	if not disabled:
 		get_parent().get_parent().chooseCard(self)
 
 func flip():
-	#print("Hello")
 	#Se cambia la imagen cargada en la carta a la correspondiente al girarla
 	get_parent().get_parent().playFlipSound()
 	if texture_normal == cardBack:

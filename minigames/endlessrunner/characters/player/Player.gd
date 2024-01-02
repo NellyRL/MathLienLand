@@ -1,9 +1,14 @@
+# ----------------- Codigo Base obtenido de: -----------------
+# 		https://github.com/CVelasco2/Math-Endless-Runner
 extends KinematicBody2D
 
-
 onready var animation = $AnimatedSprite
+# Velocidad de salto
 const JUMP_VELOCITY = -500.0
+# Peso del personaje para controlar que tan rapido cae
+# tras un salto
 export (int) var weight = 1
+# Velocidad del personaje inicialmente
 var velocity = Vector2.ZERO
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -16,6 +21,7 @@ enum {
 	IDLE
 }
 
+# Se establece el estado inicial
 var state = RUN
 
 # ---------------Senyales del juego-----------------------
@@ -31,7 +37,6 @@ func _ready():
 
 #Se establece el comportamiento del jugador
 func _physics_process(delta):
-	#print(is_on_floor())
 	if get_parent().get_parent().can_move:
 		match state:
 			#El jugador está corriendo/andando
@@ -58,8 +63,8 @@ func _physics_process(delta):
 
 #Se establece el comportamiento si se presiona un botón
 func _input(event):
-	
-	#Si se presiona el espacio y el jugador no está ya saltando
+	#Si se presiona el espacio y el jugador no está ya saltando y
+	#puede moverse
 	if event.is_action_pressed("ui_accept") and is_on_floor() \
 	and get_parent().get_parent().can_move:
 		#Se emite la señal correspondiente para que el jugador salte
@@ -74,16 +79,20 @@ func _input(event):
 func killplayer():
 	queue_free()
 
-
+# Funcion que se encargara de comprobar las colisiones.
 func _on_ContactArea_area_entered(area):
+	# Si colisiona con un enemigo, se trata la instancia
+	# con el metodo correspondiente si lo tiene. Posteriormente
+	# se emite la senyal necesaria.
 	if area.is_in_group("enemies"):
-		print("ENEMIGO COLISIONADO")
 		if area.get_parent().has_method("hurtplayer"):
 			area.get_parent().hurtplayer()
 		emit_signal("killplayer")
 
+	# Si colisiona con un coleccionable, se trata la instancia
+	# con el metodo correspondiente si lo tiene. Posteriormente
+	# se emite la senyal necesaria.
 	if area.is_in_group("pickups"):
-		print("MONEDA COLISIONADA")
 		if area.get_parent().has_method("pickup"):
 			area.get_parent().pickup()
 		emit_signal("reward")
