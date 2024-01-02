@@ -65,7 +65,6 @@ func _physics_process(delta):
 				for wheel in wheels:
 					if wheel.angular_velocity > -max_angular_speed:
 						wheel.apply_torque_impulse(-speed * delta * project_fps)
-			#print(fuel)
 		else:
 			# Si no tiene combustible o esta cabeza abajo, 
 			# activamos el temporizador de fin de juego

@@ -328,7 +328,6 @@ func check_answer(answer):
 		score += 1
 		$Player.refuel()
 		$CanvasLayer/HUDDH.set_score(score)
-		#print(score)
 	else:
 		# Si es incorrecta, activamos el sonido de error
 		# y establecemos el texto de feedback.
@@ -357,7 +356,6 @@ func check_answer(answer):
 	$CanvasLayer/HUDDH/MarginContainer/Panel.visible = false
 	can_move = true
 	if restart_timer:
-		#print("He continuado")
 		$Player/GameOverTimer.start()
 	# Comprobamos el limite de preguntas a realizar, si
 	# nos pasamos, salimos del juego
@@ -398,7 +396,6 @@ func pop_up_question():
 	# a activar tras la constentacion de la pregunta.
 	restart_timer = false
 	if !$Player/GameOverTimer.is_stopped():
-		#print("He parado!")
 		restart_timer = true
 		$Player/GameOverTimer.stop()
 	$CanvasLayer/HUDDH/MarginContainer/Panel.visible = true

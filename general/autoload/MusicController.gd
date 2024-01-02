@@ -161,7 +161,6 @@ func stop_runner_music():
 # Se encarga de hacer sonal el tema correspondiente en cada momento.
 func set_music():
 	var name = get_tree().current_scene.name
-	#print(name)
 	match name:
 		"MainMenu", "MinigameSelectScene":
 			stop_lab_music()

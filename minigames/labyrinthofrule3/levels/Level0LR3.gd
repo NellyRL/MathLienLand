@@ -48,7 +48,6 @@ func _ready():
 	#	var id = $Walls.get_cellv(cell)
 		# Obtenemos el nombre de la "baldosa"
 	#	var type = $Walls.tile_set.tile_get_name(id)
-	#	print(type)
 	
 	# Por cada marcador nos hemos asegurado de solamente poner una
 	# celda con dicha "baldosa", asi que nos vale con cojer la primera
@@ -57,11 +56,8 @@ func _ready():
 	# celda en si misma. Esta celda se añade al array de "marcos de puertas"
 	# en orden.
 	for tile_name in door_frames_names:
-		#print(tile_name)
 		var door_frame_id = $Walls.tile_set.find_tile_by_name(tile_name)
-		#print(door_frame_id)
 		#var cells_by_id = $Walls.get_used_cells_by_id(door_frame_id)
-		#print(cells_by_id)
 		door_frames.append($Walls.get_used_cells_by_id(door_frame_id).front())
 	
 	# Comprobamos que hayan tantas posiciones de puertas como respuestas posibles.
@@ -212,9 +208,7 @@ func check_answer(answer):
 		# Si no fue correcta la opcion, colocamos la puerta correspondiente,
 		# bloqueando la opcion correspondiente y procedemos a ejecutar 
 		# la funcion de "fallo"
-		print("Incorrecto!")
 		var door_id = $Walls.tile_set.find_tile_by_name(door_ids[answer][0])
-		#print(door_id)
 		$Walls.set_cellv(door_frames[door_ids[answer][1]], door_id)
 		start_over()
 
@@ -234,7 +228,6 @@ func next_question():
 	get_tree().paused = false
 	# Avanzamos en las preguntas
 	Global.current_labyrinth_question+=1
-	print("Correctas:", Global.current_labyrinth_question)
 	# Comprobamos si era la ultima pregunta disponible o no.
 	if Global.current_labyrinth_question >= Global.num_labyrinth_questions:
 		# Si era la ultima pregunta disponible, reseteamos la pregunta actual

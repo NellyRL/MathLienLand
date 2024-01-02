@@ -81,11 +81,9 @@ func _ready():
 	# en cuenta.
 	for j in range(len(units["area"])-1):
 		units["area"][j] = add_superindex(units["area"][j], SQ_EXP)
-		#print(units["area"][j])
 	
 	for j in range(len(units["vol"])-1):
 		units["vol"][j] = add_superindex(units["vol"][j], CUBIC_EXP)
-		#print(units["vol"][j])
 
 	# Conectamos las senyales
 	var _ret = $CanvasLayer/Player.connect("correct_answer", self, "correct_answer")
@@ -204,8 +202,6 @@ func set_question():
 		# Convertimos el numero de la pregunta a las unidades
 		# de la respuesta.
 		answer_number = question_number / pow(10, distance*units[sel_mag][-1])
-		#print(answer_number, units[sel_mag][answer_unit])#, pow(10, distance*units[sel_mag][-1]))
-		#print(str(question_number) + sel_unit)
 		# Establecemos el texto de la question.
 		$CanvasLayer2/HUDDSM.set_question(str(question_number) + sel_unit)
 		# Comprobamos si hay que recalcular la respuesta y su pregunta.
@@ -229,8 +225,7 @@ func set_question():
 				cur_equivalent_units[equivalents.get(cur_unit)] = true
 			else:
 				cur_equivalent_units.clear()
-			print(question_number, sel_unit, " ", answer_number, units[sel_mag][answer_unit])
-	
+
 func correct_answer():
 	# Si se ha colisionado con una opcion correcta.
 	# Aumentamos la puntuacion del jugador y lo
@@ -255,7 +250,6 @@ func wrong_answer():
 	# Si se trata de una colision con una opcion incorrecta
 	# y aun tiene alguna vida extra.
 	if lives > 0:
-		print(lives)
 		# Indicamos graficamente la perdida de una vida extra,
 		# segun corresponda.
 		match lives:

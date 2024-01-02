@@ -55,7 +55,6 @@ func _on_Goal_area_entered(area):
 	# Si el competidor que ha llegado es el jugador, apuntamos
 	# su posicion y cambiamos de escena.
 	if area.get_parent().get_parent().name == "Player":
-		#print(area.get_parent().get_parent().name + " ha llegado en la posicion " + str(pos) + "!")
 		Global.final_position = pos
 		var _ret = get_tree().change_scene("res://minigames/fractionrace/ui/EndScreenFR.tscn")
 		
@@ -77,7 +76,6 @@ func set_camera_limits():
 
 
 func _on_StartTimer_timeout():
-	#print("EMPEZAMOS")
 	# Cada vez que este timer emite timeout ha pasado un segundo,
 	# por tanto, aumentamos el counter del countdown y si este 
 	# ha pasado ya los countdown segundos, reseteamos su valor,
@@ -158,7 +156,6 @@ func check_answer(answer):
 	if correct:
 		#$CorrectSound.play()
 		#yield($CorrectSound, "finished")
-		#print("Mereces avanzar mas rapido")
 		$Player.acceleration=acceleration_player
 		$Accelerate.play()
 		$CanvasLayer/HUDFR/Panel/HBoxContainer/QuestionMargin/VBoxContainer/HBoxContainer/answerA.disabled = true
@@ -173,13 +170,11 @@ func check_answer(answer):
 		$CanvasLayer/HUDFR/Panel/HBoxContainer/QuestionMargin/VBoxContainer/HBoxContainer/answerD.disabled = false
 	else:
 		# Si no es correcta simplemente lo indicamos con un sonido.
-		#print("Ups, incorrecta.")
 		$Wrong.play()
 	
 func next_question():
 	# Avanzamos en las preguntas
 	Global.current_race_question+=1
-	#print("Correctas:", Global.current_race_question)
 	# Comprobamos si era la ultima pregunta disponible o no.
 	if Global.current_race_question >= Global.num_race_questions:
 		# Si era la ultima pregunta disponible, lo indicamos y esperamos

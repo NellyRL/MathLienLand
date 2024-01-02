@@ -39,19 +39,15 @@ func _on_ResumeBtn_button_up():
 
 func _on_answerA_button_up():
 	emit_signal("race_answerA")
-	#("Ha seleccionado A")
 
 
 func _on_answerB_button_up():
 	emit_signal("race_answerB")
-	#print("Ha seleccionado B")
 
 
 func _on_answerC_button_up():
 	emit_signal("race_answerC")
-	#print("Ha seleccionado C")
 
 
 func _on_answerD_button_up():
 	emit_signal("race_answerD")
-	#print("Ha seleccionado D")

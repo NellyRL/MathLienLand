@@ -23,7 +23,6 @@ onready var raycasts = {'right': $RayCastR, 'left': $RayCastL,
 
 # Funcion comun para mover un personaje.
 func move(direction):
-	#print("Estoy aca")
 	#$AnimatedSprite.speed_scale
 	
 	# Aplicamos la velocidad deseada a la animacion.
@@ -33,10 +32,8 @@ func move(direction):
 	orientation = direction
 	# Vemos si se puede avanzar en esa direccion.
 	if raycasts[orientation].is_colliding():
-		#print("Objeto bloquea")
 		return
 	
-	#print("Amoh a movernos")
 	# Vamos a movernos, asi que no se permite otro movimiento
 	# mientras tanto.
 	move_allowed = false
@@ -47,7 +44,6 @@ func move(direction):
 	# Esto es lo que movera al jugador.
 	var origin = position
 	var end = position + movs[orientation] * tile_dim
-	#print(origin, end)
 	# Por si sucede el caso que el jugador no se pueda mover
 	# y no se haya detectado hasta ahora, comprobamos que 
 	# la funcion process este activa.
