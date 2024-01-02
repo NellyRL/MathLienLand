@@ -14,3 +14,8 @@ func _on_SelectMinBtn_pressed():
 func _on_ExitBtn_pressed():
 	# Salimos
 	get_tree().quit()
+
+
+func _on_CreditsBtn_pressed():
+	# Cambiamos la escena para mostrar los creditos
+	var _ret = get_tree().change_scene("res://mainmenu/credits/Credits.tscn")

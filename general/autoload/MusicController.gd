@@ -162,7 +162,7 @@ func stop_runner_music():
 func set_music():
 	var name = get_tree().current_scene.name
 	match name:
-		"MainMenu", "MinigameSelectScene":
+		"MainMenu", "MinigameSelectScene", "Credits":
 			stop_lab_music()
 			stop_vict_music()
 			stop_race_music()
