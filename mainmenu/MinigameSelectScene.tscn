@@ -206,23 +206,35 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = 1004.0
 margin_bottom = 75.0
-custom_constants/separation = 600
+custom_constants/separation = 400
 
 [node name="Back" type="Button" parent="OptionBtns/HBoxContainer"]
-margin_right = 192.0
+margin_right = 184.0
 margin_bottom = 55.251
 size_flags_horizontal = 3
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 3 )
 text = "Back"
 
-[node name="Exit" type="Button" parent="OptionBtns/HBoxContainer"]
-margin_left = 792.0
+[node name="Control" type="Control" parent="OptionBtns/HBoxContainer"]
+margin_left = 584.0
+margin_right = 584.0
+margin_bottom = 55.0
+
+[node name="Control2" type="Control" parent="OptionBtns/HBoxContainer"]
+margin_left = 984.0
 margin_right = 984.0
+margin_bottom = 55.0
+
+[node name="Exit" type="Button" parent="OptionBtns/HBoxContainer"]
+visible = false
+margin_left = 1889.0
+margin_right = 1961.32
 margin_bottom = 55.251
 size_flags_horizontal = 3
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 3 )
+disabled = true
 text = "Exit"
 
 [connection signal="pressed" from="OptionBtns/HBoxContainer/Back" to="." method="_on_Back_pressed"]
