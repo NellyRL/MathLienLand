@@ -81,7 +81,7 @@ expand = true
 stretch_mode = 5
 
 [node name="JumpBtn" type="TouchScreenButton" parent="."]
-position = Vector2( 468, 530 )
+position = Vector2( 906, 293 )
 scale = Vector2( 0.4, 0.4 )
 normal = ExtResource( 7 )
 action = "ui_accept"

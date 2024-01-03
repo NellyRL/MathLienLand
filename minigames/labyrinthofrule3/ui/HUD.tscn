@@ -1,10 +1,9 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/themes/kenneyUI-blue.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/VCRosdNEUE.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://minigames/labyrinthofrule3/ui/HUD.gd" type="Script" id=3]
 [ext_resource path="res://assets/themes/kenneyUI-red.tres" type="Theme" id=4]
-[ext_resource path="res://joystick/virtual_joystick.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/keyboardtouch/accordion-right.143x256.png" type="Texture" id=6]
 [ext_resource path="res://assets/keyboardtouch/accordion-left.143x256.png" type="Texture" id=7]
 [ext_resource path="res://assets/keyboardtouch/accordion-down.256x143.png" type="Texture" id=8]
@@ -283,48 +282,33 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 19 )
 text = "RESUME"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
+[node name="ScreenControls" type="Node2D" parent="."]
 
-[node name="Virtual joystick" parent="CanvasLayer" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.282353 )
-margin_left = 120.0
-margin_top = -192.0
-margin_right = 145.0
-margin_bottom = -167.0
-joystick_mode = 1
-action_left = "left"
-action_right = "right"
-action_up = "up"
-action_down = "down"
-
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="UpTouchBtn" type="TouchScreenButton" parent="Node2D"]
+[node name="UpTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
 modulate = Color( 1, 1, 1, 0.4 )
-position = Vector2( 104, 360 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 112, 320 )
+scale = Vector2( 0.41, 0.4 )
 normal = ExtResource( 9 )
 action = "up"
 
-[node name="RightTouchBtn" type="TouchScreenButton" parent="Node2D"]
+[node name="RightTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
 modulate = Color( 1, 1, 1, 0.4 )
-position = Vector2( 192, 408 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 216, 376 )
+scale = Vector2( 0.4, 0.41 )
 normal = ExtResource( 6 )
 action = "right"
 
-[node name="DownTouchBtn" type="TouchScreenButton" parent="Node2D"]
+[node name="DownTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
 modulate = Color( 1, 1, 1, 0.4 )
-position = Vector2( 104, 488 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 112, 480 )
+scale = Vector2( 0.41, 0.4 )
 normal = ExtResource( 8 )
 action = "down"
 
-[node name="LeftTouchBtn" type="TouchScreenButton" parent="Node2D"]
+[node name="LeftTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
 modulate = Color( 1, 1, 1, 0.4 )
-position = Vector2( 48, 408 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 56, 376 )
+scale = Vector2( 0.4, 0.41 )
 normal = ExtResource( 7 )
 action = "left"
 

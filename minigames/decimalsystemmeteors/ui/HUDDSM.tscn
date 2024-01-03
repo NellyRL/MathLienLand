@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/themes/kenneyUI-red.tres" type="Theme" id=1]
 [ext_resource path="res://assets/themes/kenneyUI-blue.tres" type="Theme" id=2]
@@ -8,7 +8,10 @@
 [ext_resource path="res://assets/hills/time.png" type="Texture" id=6]
 [ext_resource path="res://assets/meteors/platformPack_item017.png" type="Texture" id=7]
 [ext_resource path="res://minigames/common/textEffects/sup.gd" type="Script" id=8]
-[ext_resource path="res://joystick/virtual_joystick.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/keyboardtouch/accordion-up.png" type="Texture" id=9]
+[ext_resource path="res://assets/keyboardtouch/accordion-right.png" type="Texture" id=10]
+[ext_resource path="res://assets/keyboardtouch/accordion-down.png" type="Texture" id=11]
+[ext_resource path="res://assets/keyboardtouch/accordion-left.png" type="Texture" id=12]
 
 [sub_resource type="StyleBoxFlat" id=20]
 bg_color = Color( 0.168627, 0.25098, 0.341176, 0 )
@@ -317,19 +320,35 @@ valign = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Appear = SubResource( 34 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="ScreenControls" type="Node2D" parent="."]
 
-[node name="Virtual joystick" parent="CanvasLayer" instance=ExtResource( 9 )]
-modulate = Color( 1, 1, 1, 0.282353 )
-margin_left = 120.0
-margin_top = -192.0
-margin_right = 145.0
-margin_bottom = -167.0
-joystick_mode = 1
-action_left = "left"
-action_right = "right"
-action_up = "up"
-action_down = "down"
+[node name="UpTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+modulate = Color( 1, 1, 1, 0.368627 )
+position = Vector2( 112, 320 )
+scale = Vector2( 0.41, 0.4 )
+normal = ExtResource( 9 )
+action = "up"
+
+[node name="RightTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+modulate = Color( 1, 1, 1, 0.368627 )
+position = Vector2( 216, 376 )
+scale = Vector2( 0.4, 0.41 )
+normal = ExtResource( 10 )
+action = "right"
+
+[node name="DownTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+modulate = Color( 1, 1, 1, 0.368627 )
+position = Vector2( 112, 480 )
+scale = Vector2( 0.41, 0.4 )
+normal = ExtResource( 11 )
+action = "down"
+
+[node name="LeftTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+modulate = Color( 1, 1, 1, 0.4 )
+position = Vector2( 56, 376 )
+scale = Vector2( 0.4, 0.41 )
+normal = ExtResource( 12 )
+action = "left"
 
 [connection signal="button_up" from="Panel/HBoxContainer/BackBtnMargin/BackBtn" to="." method="_on_BackBtn_button_up"]
 [connection signal="button_up" from="Panel/HBoxContainer/PauseBtnMargin/PauseBtn" to="." method="_on_PauseBtn_button_up"]

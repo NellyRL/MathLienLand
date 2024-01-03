@@ -18,16 +18,10 @@ _global_script_classes=[ {
 "class": "RichTextSup",
 "language": "GDScript",
 "path": "res://minigames/common/textEffects/sup.gd"
-}, {
-"base": "Control",
-"class": "VirtualJoystick",
-"language": "GDScript",
-"path": "res://joystick/virtual_joystick.gd"
 } ]
 _global_script_class_icons={
 "Card": "",
-"RichTextSup": "",
-"VirtualJoystick": ""
+"RichTextSup": ""
 }
 
 [application]
