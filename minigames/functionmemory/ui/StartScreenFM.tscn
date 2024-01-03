@@ -56,13 +56,13 @@ margin_right = 795.0
 margin_bottom = 396.0
 
 [node name="Title" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="0"]
-margin_right = 724.0
+margin_right = 745.0
 
 [node name="Separator" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="1"]
-margin_right = 724.0
+margin_right = 745.0
 
 [node name="Instructions" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="2"]
-margin_right = 724.0
+margin_right = 745.0
 margin_bottom = 250.0
 text = "At the start of the game, you'll see 10 cards.
 
@@ -73,11 +73,11 @@ text = "At the start of the game, you'll see 10 cards.
 
 [node name="Separator2" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="3"]
 margin_top = 254.0
-margin_right = 724.0
+margin_right = 745.0
 margin_bottom = 274.0
 
 [node name="Close" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="4"]
-margin_left = 319.0
+margin_left = 330.0
 margin_top = 278.0
-margin_right = 403.324
+margin_right = 414.324
 margin_bottom = 328.251

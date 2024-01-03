@@ -53,7 +53,7 @@ margin_bottom = 546.0
 
 [node name="VBoxContainer" parent="CanvasLayer/MarginContainer/Panel/MarginContainer" index="0"]
 margin_right = 795.0
-margin_bottom = 407.0
+margin_bottom = 436.0
 
 [node name="Title" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="0"]
 margin_right = 745.0
@@ -63,17 +63,23 @@ margin_right = 745.0
 
 [node name="Instructions" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="2"]
 margin_right = 745.0
+margin_bottom = 308.0
 text = "1. Your character will be running non-stop
 to try to collect as many coins as possible! Help it jump
- to avoid its enemies!
+using the space bar or the black arrow displayed
+on the screen to avoid its enemies!
 
 2. If your character gets hurt by an enemy,
 answering correctly to a question will help it recovers
 quicly to keep going! Have fun!"
 
 [node name="Separator2" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="3"]
+margin_top = 312.0
 margin_right = 745.0
+margin_bottom = 332.0
 
 [node name="Close" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="4"]
 margin_left = 330.0
+margin_top = 336.0
 margin_right = 414.324
+margin_bottom = 386.251

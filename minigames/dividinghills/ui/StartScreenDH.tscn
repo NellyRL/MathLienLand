@@ -47,7 +47,7 @@ margin_right = 724.0
 [node name="Instructions" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="2"]
 margin_right = 724.0
 margin_bottom = 308.0
-text = "1. Drive as far as possible with the arrow keys!
+text = "1. Get as far as possible with the arrow keys or joystick!
 2. Every now and then, a chest is going to pop up!
 3. Collect the chest and answer correctly to
 claim its rewards, coins and fuel :)

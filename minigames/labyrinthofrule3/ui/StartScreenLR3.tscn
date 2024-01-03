@@ -37,13 +37,23 @@ margin_bottom = 545.0
 
 [node name="VBoxContainer" parent="CanvasLayer/MarginContainer/Panel/MarginContainer" index="0"]
 margin_right = 787.0
-margin_bottom = 407.0
+margin_bottom = 436.0
 
 [node name="Instructions" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="2"]
+margin_bottom = 308.0
 text = "1. A question will appear in the top of your screen!!
 
 2. The four possible answers are represented by a corner!!
 
-3. Reach a corner and pick their flag to choose an answer!
+3. Reach a corner using the arrow keys or the screen
+controls and pick their flag to choose an answer!
 
 4. Dodge the enemies and have fun!! "
+
+[node name="Separator2" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="3"]
+margin_top = 312.0
+margin_bottom = 332.0
+
+[node name="Close" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="4"]
+margin_top = 336.0
+margin_bottom = 386.251
