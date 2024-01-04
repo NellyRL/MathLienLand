@@ -123,7 +123,7 @@ var credits = [
 		"",
 		"My college friends, for always being there",
 		"",
-		"And most of all to God, for guiding me throughout all my live",
+		"And most of all to God, for always guiding me",
 	],[
 		"Thank you for using this project!"
 	]
