@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://minigames/common/BaseStartScreen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/ui/titles/endlessrunner_title.png" type="Texture" id=2]
+
+[node name="StartScreenMER" instance=ExtResource( 1 )]
+
+[node name="VBoxContainer" parent="CanvasLayer/MarginContainer" index="0"]
+margin_right = 945.0
+margin_bottom = 546.0
+
+[node name="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer" index="0"]
+margin_right = 845.0
+margin_bottom = 316.0
+texture = ExtResource( 2 )
+
+[node name="Separator1" parent="CanvasLayer/MarginContainer/VBoxContainer" index="1"]
+margin_top = 320.0
+margin_right = 845.0
+margin_bottom = 340.0
+
+[node name="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" index="2"]
+margin_top = 344.0
+margin_right = 845.0
+margin_bottom = 368.0
+text = "Jump over enemies and collect as much coins as you can!"
+
+[node name="Separator2" parent="CanvasLayer/MarginContainer/VBoxContainer" index="3"]
+margin_top = 372.0
+margin_right = 845.0
+margin_bottom = 392.0
+
+[node name="GridContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" index="4"]
+margin_top = 396.0
+margin_right = 845.0
+margin_bottom = 446.0
+
+[node name="BackBtn" parent="CanvasLayer/MarginContainer/VBoxContainer/GridContainer" index="0"]
+margin_right = 235.0
+
+[node name="StartBtn" parent="CanvasLayer/MarginContainer/VBoxContainer/GridContainer" index="1"]
+margin_left = 305.0
+margin_right = 540.0
+next_scene_path = "res://minigames/endlessrunner/levels/Level0MER.tscn"
+
+[node name="Info" parent="CanvasLayer/MarginContainer/VBoxContainer/GridContainer" index="2"]
+margin_left = 610.0
+margin_right = 845.0
+
+[node name="Panel" parent="CanvasLayer/MarginContainer" index="1"]
+margin_right = 945.0
+margin_bottom = 546.0
+
+[node name="VBoxContainer" parent="CanvasLayer/MarginContainer/Panel/MarginContainer" index="0"]
+margin_right = 795.0
+margin_bottom = 407.0
+
+[node name="Title" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="0"]
+margin_right = 745.0
+
+[node name="Separator" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="1"]
+margin_right = 745.0
+
+[node name="Instructions" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="2"]
+margin_right = 745.0
+text = "1. Your character will be running non-stop
+to try to collect as many coins as possible! Help it jump
+using the space bar to avoid its enemies!
+
+2. If your character gets hurt by an enemy,
+answering correctly to a question will help it recovers
+quicly to keep going! Have fun!"
+
+[node name="Separator2" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="3"]
+margin_right = 745.0
+
+[node name="Close" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="4"]
+margin_left = 330.0
+margin_right = 414.324

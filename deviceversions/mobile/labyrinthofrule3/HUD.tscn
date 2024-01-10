@@ -1,0 +1,317 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://assets/themes/kenneyUI-blue.tres" type="Theme" id=1]
+[ext_resource path="res://assets/fonts/VCRosdNEUE.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://minigames/labyrinthofrule3/ui/HUD.gd" type="Script" id=3]
+[ext_resource path="res://assets/themes/kenneyUI-red.tres" type="Theme" id=4]
+[ext_resource path="res://assets/keyboardtouch/accordion-right.143x256.png" type="Texture" id=6]
+[ext_resource path="res://assets/keyboardtouch/accordion-left.143x256.png" type="Texture" id=7]
+[ext_resource path="res://assets/keyboardtouch/accordion-down.256x143.png" type="Texture" id=8]
+[ext_resource path="res://assets/keyboardtouch/accordion-up.256x143.png" type="Texture" id=9]
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.219608, 0.392157, 0.576471, 1 )
+
+[sub_resource type="Theme" id=16]
+Panel/styles/panel = SubResource( 15 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.219608, 0.392157, 0.576471, 1 )
+
+[sub_resource type="Theme" id=10]
+Panel/styles/panel = SubResource( 20 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 22
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.215686, 0.298039, 0.835294, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=13]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0588235, 0.796078, 0.105882, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id=4]
+Panel/styles/panel = SubResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.839216, 0.160784, 0.160784, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id=6]
+Panel/styles/panel = SubResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.839216, 0.898039, 0.12549, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id=8]
+Panel/styles/panel = SubResource( 7 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 60
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 55
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 16 )
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -472.0
+theme = SubResource( 10 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 40
+
+[node name="BackBtnMargin" type="MarginContainer" parent="Panel/HBoxContainer"]
+margin_right = 164.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 50
+
+[node name="BackBtn" type="Button" parent="Panel/HBoxContainer/BackBtnMargin"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 144.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 11 )
+text = "BACK"
+
+[node name="QuestionMargin" type="MarginContainer" parent="Panel/HBoxContainer"]
+margin_left = 204.0
+margin_right = 819.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.75
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="Question" type="Label" parent="Panel/HBoxContainer/QuestionMargin"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 595.0
+margin_bottom = 108.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 12 )
+text = "Lore Ipsum"
+align = 1
+valign = 1
+
+[node name="PauseBtnMargin" type="MarginContainer" parent="Panel/HBoxContainer"]
+margin_left = 859.0
+margin_right = 1024.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 50
+
+[node name="PauseBtn" type="Button" parent="Panel/HBoxContainer/PauseBtnMargin"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 145.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 11 )
+text = "PAUSE"
+
+[node name="A" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 128.0
+margin_right = -896.0
+margin_bottom = -408.0
+custom_styles/panel = SubResource( 14 )
+
+[node name="Answer" type="Label" parent="A"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 13 )
+text = "Lore Ipsum"
+align = 1
+valign = 1
+
+[node name="B" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 896.0
+margin_top = 128.0
+margin_bottom = -408.0
+theme = SubResource( 4 )
+
+[node name="Answer" type="Label" parent="B"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 13 )
+text = "Lore Ipsum"
+align = 1
+valign = 1
+
+[node name="C" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 536.0
+margin_right = -896.0
+theme = SubResource( 6 )
+
+[node name="Answer" type="Label" parent="C"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 13 )
+text = "Lore Ipsum"
+align = 1
+valign = 1
+
+[node name="D" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 896.0
+margin_top = 536.0
+theme = SubResource( 8 )
+
+[node name="Answer" type="Label" parent="D"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 13 )
+text = "Lore Ipsum"
+align = 1
+valign = 1
+
+[node name="Time" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+custom_fonts/font = SubResource( 17 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="PausedScreen" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0862745, 0.0784314, 0.0784314, 0.627451 )
+
+[node name="CenterContainer" type="CenterContainer" parent="PausedScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PausedScreen/CenterContainer"]
+margin_left = 404.0
+margin_top = 210.0
+margin_right = 619.0
+margin_bottom = 390.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 40
+
+[node name="Label" type="Label" parent="PausedScreen/CenterContainer/VBoxContainer"]
+margin_right = 215.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 18 )
+text = "PAUSED!"
+align = 1
+valign = 1
+
+[node name="ResumeBtn" type="Button" parent="PausedScreen/CenterContainer/VBoxContainer"]
+pause_mode = 2
+margin_top = 100.0
+margin_right = 215.0
+margin_bottom = 180.251
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "RESUME"
+
+[node name="ScreenControls" type="Node2D" parent="."]
+
+[node name="UpTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+modulate = Color( 1, 1, 1, 0.4 )
+position = Vector2( 112, 320 )
+scale = Vector2( 0.41, 0.4 )
+normal = ExtResource( 9 )
+action = "up"
+
+[node name="RightTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+modulate = Color( 1, 1, 1, 0.4 )
+position = Vector2( 216, 376 )
+scale = Vector2( 0.4, 0.41 )
+normal = ExtResource( 6 )
+action = "right"
+
+[node name="DownTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+modulate = Color( 1, 1, 1, 0.4 )
+position = Vector2( 112, 480 )
+scale = Vector2( 0.41, 0.4 )
+normal = ExtResource( 8 )
+action = "down"
+
+[node name="LeftTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+modulate = Color( 1, 1, 1, 0.4 )
+position = Vector2( 56, 376 )
+scale = Vector2( 0.4, 0.41 )
+normal = ExtResource( 7 )
+action = "left"
+
+[connection signal="button_up" from="Panel/HBoxContainer/BackBtnMargin/BackBtn" to="." method="_on_BackBtn_button_up"]
+[connection signal="button_up" from="Panel/HBoxContainer/PauseBtnMargin/PauseBtn" to="." method="_on_PauseBtn_button_up"]
+[connection signal="button_up" from="PausedScreen/CenterContainer/VBoxContainer/ResumeBtn" to="." method="_on_ResumeBtn_button_up"]

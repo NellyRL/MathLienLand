@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://minigames/common/BaseStartScreen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/ui/titles/dividinghills_title.png" type="Texture" id=2]
+
+[node name="StartScreenDH" instance=ExtResource( 1 )]
+
+[node name="VBoxContainer" parent="CanvasLayer/MarginContainer" index="0"]
+margin_bottom = 545.0
+
+[node name="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer" index="0"]
+margin_bottom = 315.0
+texture = ExtResource( 2 )
+
+[node name="Separator1" parent="CanvasLayer/MarginContainer/VBoxContainer" index="1"]
+margin_top = 319.0
+margin_bottom = 339.0
+
+[node name="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" index="2"]
+margin_top = 343.0
+margin_bottom = 367.0
+text = "Answer correctly to collect coins and get to the end of the hills!"
+
+[node name="Separator2" parent="CanvasLayer/MarginContainer/VBoxContainer" index="3"]
+margin_top = 371.0
+margin_bottom = 391.0
+
+[node name="GridContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" index="4"]
+margin_top = 395.0
+margin_bottom = 445.0
+
+[node name="StartBtn" parent="CanvasLayer/MarginContainer/VBoxContainer/GridContainer" index="1"]
+next_scene_path = "res://minigames/dividinghills/levels/Level0DH.tscn"
+
+[node name="Panel" parent="CanvasLayer/MarginContainer" index="1"]
+margin_bottom = 545.0
+
+[node name="VBoxContainer" parent="CanvasLayer/MarginContainer/Panel/MarginContainer" index="0"]
+margin_bottom = 436.0
+
+[node name="Title" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="0"]
+margin_right = 724.0
+
+[node name="Separator" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="1"]
+margin_right = 724.0
+
+[node name="Instructions" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="2"]
+margin_right = 724.0
+margin_bottom = 308.0
+text = "1. Get as far as you can with the arrow buttons!
+2. Every now and then, a chest is going to pop up!
+3. Collect the chest and answer correctly to
+claim its rewards, coins and fuel :)
+4. Be careful not to run out of fuel or getting
+stuck upside down :(
+5. Try to get as far as you can in the 
+shortest time and have fun!"
+
+[node name="Separator2" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="3"]
+margin_top = 312.0
+margin_right = 724.0
+margin_bottom = 332.0
+
+[node name="Close" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer" index="4"]
+margin_left = 319.0
+margin_top = 336.0
+margin_right = 403.324
+margin_bottom = 386.251

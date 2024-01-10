@@ -1,0 +1,355 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://assets/themes/kenneyUI-red.tres" type="Theme" id=1]
+[ext_resource path="res://assets/themes/kenneyUI-blue.tres" type="Theme" id=2]
+[ext_resource path="res://assets/fonts/VCRosdNEUE.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://minigames/decimalsystemmeteors/ui/HUDDSM.gd" type="Script" id=4]
+[ext_resource path="res://assets/hills/pickups/coinGold.png" type="Texture" id=5]
+[ext_resource path="res://assets/hills/time.png" type="Texture" id=6]
+[ext_resource path="res://assets/meteors/platformPack_item017.png" type="Texture" id=7]
+[ext_resource path="res://minigames/common/textEffects/sup.gd" type="Script" id=8]
+[ext_resource path="res://assets/keyboardtouch/accordion-up.png" type="Texture" id=9]
+[ext_resource path="res://assets/keyboardtouch/accordion-right.png" type="Texture" id=10]
+[ext_resource path="res://assets/keyboardtouch/accordion-down.png" type="Texture" id=11]
+[ext_resource path="res://assets/keyboardtouch/accordion-left.png" type="Texture" id=12]
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.168627, 0.25098, 0.341176, 0 )
+
+[sub_resource type="Theme" id=21]
+Panel/styles/panel = SubResource( 20 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 25
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=28]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=29]
+size = 23
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="RichTextEffect" id=30]
+script = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=25]
+size = 60
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=26]
+size = 55
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=27]
+size = 42
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=31]
+bg_color = Color( 0.690196, 0.00392157, 0.00392157, 1 )
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="Theme" id=32]
+Panel/styles/panel = SubResource( 31 )
+
+[sub_resource type="DynamicFont" id=33]
+size = 26
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=34]
+resource_name = "Appear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("LastMsg:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LastMsg/CenterContainer:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LastMsg/CenterContainer/Label:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="HUDDSM" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -472.0
+theme = SubResource( 21 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 40
+
+[node name="BackBtnMargin" type="MarginContainer" parent="Panel/HBoxContainer"]
+margin_right = 164.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 50
+
+[node name="BackBtn" type="Button" parent="Panel/HBoxContainer/BackBtnMargin"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 144.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 22 )
+text = "BACK"
+
+[node name="QuestionMargin" type="MarginContainer" parent="Panel/HBoxContainer"]
+margin_left = 204.0
+margin_right = 819.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.75
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="Question" type="RichTextLabel" parent="Panel/HBoxContainer/QuestionMargin"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 595.0
+margin_bottom = 108.0
+size_flags_horizontal = 3
+custom_fonts/bold_font = SubResource( 28 )
+custom_fonts/normal_font = SubResource( 29 )
+bbcode_enabled = true
+bbcode_text = "
+[center]What is equivalent to:
+[color=blue]XXX cm[sup][b]3[/b][/sup][/color]?[/center]"
+text = "
+What is equivalent to:
+XXX cm3?"
+custom_effects = [ SubResource( 30 ) ]
+
+[node name="PauseBtnMargin" type="MarginContainer" parent="Panel/HBoxContainer"]
+margin_left = 859.0
+margin_right = 1024.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 50
+
+[node name="PauseBtn" type="Button" parent="Panel/HBoxContainer/PauseBtnMargin"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 145.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 22 )
+text = "PAUSE"
+
+[node name="PausedScreen" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0862745, 0.0784314, 0.0784314, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="PausedScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PausedScreen/CenterContainer"]
+margin_left = 404.0
+margin_top = 210.0
+margin_right = 619.0
+margin_bottom = 390.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 40
+
+[node name="Label" type="Label" parent="PausedScreen/CenterContainer/VBoxContainer"]
+margin_right = 215.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 25 )
+text = "PAUSED!"
+align = 1
+valign = 1
+
+[node name="ResumeBtn" type="Button" parent="PausedScreen/CenterContainer/VBoxContainer"]
+pause_mode = 2
+margin_top = 100.0
+margin_right = 215.0
+margin_bottom = 180.251
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 26 )
+text = "RESUME"
+
+[node name="Score" type="TextureRect" parent="."]
+margin_left = -8.0
+margin_top = 512.0
+margin_right = 56.0
+margin_bottom = 576.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Label" type="Label" parent="Score"]
+margin_left = 74.6667
+margin_top = 16.0
+margin_right = 114.667
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 27 )
+text = "0"
+
+[node name="Time" type="TextureRect" parent="."]
+margin_left = 960.0
+margin_top = 536.0
+margin_right = 996.0
+margin_bottom = 572.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Label" type="Label" parent="Time"]
+margin_left = -42.6666
+margin_right = -15.6666
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 27 )
+text = "0"
+
+[node name="Life1" type="TextureRect" parent="."]
+margin_left = 400.0
+margin_top = 504.0
+margin_right = 464.0
+margin_bottom = 568.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 7 )
+
+[node name="Life2" type="TextureRect" parent="."]
+margin_left = 464.0
+margin_top = 504.0
+margin_right = 528.0
+margin_bottom = 568.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 7 )
+
+[node name="Life3" type="TextureRect" parent="."]
+margin_left = 528.0
+margin_top = 504.0
+margin_right = 592.0
+margin_bottom = 568.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 7 )
+
+[node name="LastMsg" type="Panel" parent="."]
+self_modulate = Color( 1, 0, 0, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -50.0
+margin_right = 100.0
+margin_bottom = 50.0
+theme = SubResource( 32 )
+
+[node name="CenterContainer" type="CenterContainer" parent="LastMsg"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="LastMsg/CenterContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 44.0
+margin_top = 21.0
+margin_right = 155.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 33 )
+text = "OH NO! 
+You died!"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Appear = SubResource( 34 )
+
+[node name="ScreenControls" type="Node2D" parent="."]
+
+[node name="UpTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+modulate = Color( 1, 1, 1, 0.368627 )
+position = Vector2( 112, 320 )
+scale = Vector2( 0.41, 0.4 )
+normal = ExtResource( 9 )
+action = "up"
+
+[node name="RightTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+modulate = Color( 1, 1, 1, 0.368627 )
+position = Vector2( 216, 376 )
+scale = Vector2( 0.4, 0.41 )
+normal = ExtResource( 10 )
+action = "right"
+
+[node name="DownTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+modulate = Color( 1, 1, 1, 0.368627 )
+position = Vector2( 112, 480 )
+scale = Vector2( 0.41, 0.4 )
+normal = ExtResource( 11 )
+action = "down"
+
+[node name="LeftTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+modulate = Color( 1, 1, 1, 0.4 )
+position = Vector2( 56, 376 )
+scale = Vector2( 0.4, 0.41 )
+normal = ExtResource( 12 )
+action = "left"
+
+[connection signal="button_up" from="Panel/HBoxContainer/BackBtnMargin/BackBtn" to="." method="_on_BackBtn_button_up"]
+[connection signal="button_up" from="Panel/HBoxContainer/PauseBtnMargin/PauseBtn" to="." method="_on_PauseBtn_button_up"]
+[connection signal="button_up" from="PausedScreen/CenterContainer/VBoxContainer/ResumeBtn" to="." method="_on_ResumeBtn_button_up"]
