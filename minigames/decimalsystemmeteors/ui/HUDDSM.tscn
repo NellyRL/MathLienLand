@@ -321,8 +321,10 @@ valign = 1
 anims/Appear = SubResource( 34 )
 
 [node name="ScreenControls" type="Node2D" parent="."]
+visible = false
 
 [node name="UpTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+visible = false
 modulate = Color( 1, 1, 1, 0.368627 )
 position = Vector2( 112, 320 )
 scale = Vector2( 0.41, 0.4 )
@@ -330,6 +332,7 @@ normal = ExtResource( 9 )
 action = "up"
 
 [node name="RightTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+visible = false
 modulate = Color( 1, 1, 1, 0.368627 )
 position = Vector2( 216, 376 )
 scale = Vector2( 0.4, 0.41 )
@@ -337,6 +340,7 @@ normal = ExtResource( 10 )
 action = "right"
 
 [node name="DownTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+visible = false
 modulate = Color( 1, 1, 1, 0.368627 )
 position = Vector2( 112, 480 )
 scale = Vector2( 0.41, 0.4 )
@@ -344,6 +348,7 @@ normal = ExtResource( 11 )
 action = "down"
 
 [node name="LeftTouchBtn" type="TouchScreenButton" parent="ScreenControls"]
+visible = false
 modulate = Color( 1, 1, 1, 0.4 )
 position = Vector2( 56, 376 )
 scale = Vector2( 0.4, 0.41 )

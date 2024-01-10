@@ -33,7 +33,6 @@ margin_bottom = 445.0
 next_scene_path = "res://minigames/labyrinthofrule3/levels/Level0LR3.tscn"
 
 [node name="Panel" parent="CanvasLayer/MarginContainer" index="1"]
-visible = true
 margin_bottom = 545.0
 
 [node name="VBoxContainer" parent="CanvasLayer/MarginContainer/Panel/MarginContainer" index="0"]

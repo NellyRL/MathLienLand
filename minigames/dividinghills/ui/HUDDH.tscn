@@ -338,8 +338,10 @@ custom_fonts/font = SubResource( 10 )
 text = "RESUME"
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 
 [node name="RightTouchBtn" type="TouchScreenButton" parent="Node2D"]
+visible = false
 modulate = Color( 1, 1, 1, 0.4 )
 position = Vector2( 960, 312 )
 scale = Vector2( 0.4, 0.4 )
@@ -347,6 +349,7 @@ normal = ExtResource( 11 )
 action = "right"
 
 [node name="LeftTouchBtn" type="TouchScreenButton" parent="Node2D"]
+visible = false
 modulate = Color( 1, 1, 1, 0.4 )
 position = Vector2( 24, 304 )
 scale = Vector2( 0.4, 0.4 )
