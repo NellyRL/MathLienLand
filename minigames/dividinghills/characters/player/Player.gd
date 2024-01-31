@@ -5,7 +5,7 @@ var wheels = []
 # Velocidad del jugador
 export (int) var speed = 60000
 # Limite de velocidad angular para las ruedas.
-export (int) var max_angular_speed = 40
+export (int) var max_angular_speed = 100
 # FPS del proyecto
 var project_fps
 # Combustible inicial
@@ -49,7 +49,7 @@ func _physics_process(delta):
 				# conduciendo.
 				player_is_driving += 1
 				# Para que pueda girar.
-				apply_torque_impulse(-1500*delta*project_fps)
+				apply_torque_impulse(-150*delta*project_fps)
 				# Cada vez que mueva el jugador, se consumira
 				# combustible.
 				use_fuel(delta)
@@ -60,7 +60,7 @@ func _physics_process(delta):
 			# Se realizara lo mismo que en el caso de la derecha.
 			if Input.is_action_pressed("left"):
 				player_is_driving += 1
-				apply_torque_impulse(1500*delta*project_fps)
+				apply_torque_impulse(150*delta*project_fps)
 				use_fuel(delta)
 				for wheel in wheels:
 					if wheel.angular_velocity > -max_angular_speed:
