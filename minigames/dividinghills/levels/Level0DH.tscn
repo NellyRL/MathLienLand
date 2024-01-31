@@ -39,14 +39,14 @@ scroll_ignore_camera_zoom = true
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.4, 1 )
-motion_mirroring = Vector2( 1024, 0 )
+motion_mirroring = Vector2( 2048, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Sky"]
 position = Vector2( 8, 120 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 1024, 1024 )
+region_rect = Rect2( 0, 0, 2048, 2048 )
 
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 976, -704 )
