@@ -159,7 +159,7 @@ func start_over():
 	$WrongSound.play()
 	$Player.move_allowed = false
 	$Player.hide()
-	yield(get_tree().create_timer(1), 'timeout')
+	yield(get_tree().create_timer(1.5), 'timeout')
 	$Player.position = $StartingPoint.position
 	$Player/AnimationPlayer.play_backwards("die")
 	$Player.show()
