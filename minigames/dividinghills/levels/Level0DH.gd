@@ -243,7 +243,7 @@ func set_gcd_question():
 	# multiplicados por gcd para asegurarnos de obtener el gcd
 	# correcto. Esto es pues a y b pueden tener factores
 	# primos en comun.
-	gcd = gcd * euclidean_gdc(a, b)
+	gcd = gcd * euclidean_gcd(a, b)
 	
 	# Establecemos como posibles respuestas a y b 
 	# ademas de gcd pues no seran numeros conocidos
@@ -376,7 +376,7 @@ func enable_player_answer():
 	$CanvasLayer/HUDDH/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/C.disabled = false
 	$CanvasLayer/HUDDH/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/D.disabled = false
 
-func euclidean_gdc(n1, n2):
+func euclidean_gcd(n1, n2):
 	# Funcion que plasma el algoritmo euclideo
 	# para calcular el gcd de dos numeros.
 	var aux

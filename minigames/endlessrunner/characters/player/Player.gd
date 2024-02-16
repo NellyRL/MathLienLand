@@ -29,7 +29,6 @@ signal killplayer
 signal reward
 # ---------------- FIN -----------------------------------
 
-
 func _ready():
 	#Se conecta con la señal indicada
 	# Signals.connect("killplayer", killplayer)
@@ -73,8 +72,6 @@ func _input(event):
 		#Se establece el estado JUMP
 		state = JUMP
 
-
-
 #Si el jugador muere, se liberan los recursos
 func killplayer():
 	queue_free()
@@ -96,4 +93,3 @@ func _on_ContactArea_area_entered(area):
 		if area.get_parent().has_method("pickup"):
 			area.get_parent().pickup()
 		emit_signal("reward")
-			
