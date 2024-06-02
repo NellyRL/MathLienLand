@@ -53,7 +53,7 @@ func fill_labyrinth_questions():
 	
 	question1["question"] = "If 10cm of a map are 750m in reality, how many meters\n are 13cm in the map?"
 	question1["answerA"] = ["1000m", false]
-	question1["answerB"] = ["950m", true]
+	question1["answerB"] = ["975m", true]
 	question1["answerC"] = ["5000m", false]
 	question1["answerD"] = ["13m", false]
 	question1["explanation"] = ["res://assets/lab_explanationcards/0.png"]
