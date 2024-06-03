@@ -157,6 +157,7 @@ func spawn_items():
 
 func start_over():
 	$WrongSound.play()
+	$Player.set_process(false)
 	$Player.move_allowed = false
 	$Player.hide()
 	yield(get_tree().create_timer(1.5), 'timeout')
