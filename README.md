@@ -14,6 +14,7 @@ You have arrived in the world of Mathliens, little creatures whose daily life is
 However, this is only the seed of the video game, true fun starts by accessing the following link https://nellyrl.itch.io/mathlien-land-mobile-v1, if you visit us from a _tactile_ galaxy, or https://nellyrl.itch.io/mathlien-land-desktop-v1 if your origins are more similar to a _desktop_
 
 <hr>
+
 Bienvenido querido _terrestre internáutico_, 
 
 Has llegado al mundo de los Mathliens, pequeñas criaturas cuya vida cotidiana se basa en la realización de operaciones matemáticas. 
